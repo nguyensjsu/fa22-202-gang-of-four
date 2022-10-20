@@ -1,1 +1,2 @@
-# fa22-202-gang-of-four
+# Team Project (Replace with your Team Name and Journal)
+
