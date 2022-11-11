@@ -1,6 +1,7 @@
 package com.zetcode;
 
 import com.zetcode.sprite.Alien;
+import com.zetcode.sprite.Bomb;
 import com.zetcode.sprite.Player;
 import com.zetcode.sprite.Shot;
 
@@ -117,7 +118,7 @@ public class Board extends JPanel {
 
         for (Alien a : aliens) {
 
-            Alien.Bomb b = a.getBomb();
+            Bomb b = a.getBomb();
 
             if (!b.isDestroyed()) {
 
@@ -286,9 +287,9 @@ public class Board extends JPanel {
         for (Alien alien : aliens) {
 
             int shot = generator.nextInt(15);
-            //Alien.Bomb bomb = alien.getBomb();
+            Bomb bomb = alien.getBomb();
 
-            /*if (shot == Commons.CHANCE && alien.isVisible() && bomb.isDestroyed()) {
+            if (shot == Commons.CHANCE && alien.isVisible() && bomb.isDestroyed()) {
 
                 bomb.setDestroyed(false);
                 bomb.setX(alien.getX());
@@ -322,7 +323,7 @@ public class Board extends JPanel {
 
                     bomb.setDestroyed(true);
                 }
-            }*/
+            }
         }
     }
 
