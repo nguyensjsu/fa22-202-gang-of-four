@@ -11,6 +11,7 @@ We took the code base and spent time to understand the functionality; in additio
 We had the discussion about the same and gave each other feedback about the choices. Additionally, we discussed the process flow of the project.
 
 
+
 <b>What do I plan to do this week? </b>
 <br>
 This week I plan to implement the first functionality i.e. the multi-lives functionality, the current code base just supports the player to play a single life.
