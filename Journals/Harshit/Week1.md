@@ -1,6 +1,7 @@
 # Week 1 Journal
 
 <b>Team Member: Harshit Chouksey</b>
+
 <br>
 <b>What have I been working on? </b>
 <br>
@@ -9,19 +10,19 @@ We all shared our findings and opinions and with mutual consensus decided on "Sp
 We took the code base and spent time to understand the functionality; in addition, we explored what features can be added to the project and what patterns can be used while implementing them.
 We had the discussion about the same and gave each other feedback about the choices. Additionally, we discussed the process flow of the project.
 
-<br>
+
 <b>What do I plan to do this week? </b>
 <br>
 This week I plan to implement the first functionality i.e. the multi-lives functionality, the current code base just supports the player to play a single life.
 The documentation will be added for the same.
 If time permits, I will work with the team to help others add one functionality by each team member to the project.
 
-<br>
+
 <b>What are my blockers? </b>
 <br>
 I currently don't have any blockers.
 
-<br>
+
 <b>Core XP Value- Simplicity </b>
 <br>
 We have tried to keep the entire process simple, the functionalities we will be implementing in a way that they won't create blockers for other developers.
