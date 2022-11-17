@@ -35,12 +35,23 @@ public class InputHandler implements KeyListener {
         toggleKey(e.getKeyCode(), false);
     }
 
+    
+    /*
+    public static final int VK_KP_UP          = 0xE0;
+    public static final int VK_KP_DOWN        = 0xE1;
+    public static final int VK_KP_LEFT        = 0xE2;
+    public static final int VK_KP_RIGHT       = 0xE3;
+     */
+    
     public void toggleKey(int keyCode, boolean isPressed){
-        if(keyCode == KeyEvent.VK_D)
+    	
+    	System.err.println("keyCode: " + keyCode);
+    	
+        if(keyCode == KeyEvent.VK_KP_RIGHT || keyCode == 39)
             right.toggle(isPressed);
-        if(keyCode == KeyEvent.VK_A)
+        if(keyCode == KeyEvent.VK_KP_LEFT || keyCode == 37)
             left.toggle(isPressed);
-        if(keyCode == KeyEvent.VK_SPACE)
+        if(keyCode == KeyEvent.VK_KP_UP || keyCode == 38)
             space.toggle(isPressed);
     }
 }
