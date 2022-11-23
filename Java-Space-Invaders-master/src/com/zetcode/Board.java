@@ -28,7 +28,6 @@ public class Board extends JPanel {
     private List<Alien> aliens;
     private Player player;
     private Shot shot;
-    
     private int direction = -1;
     private int deaths = 0;
 
@@ -37,6 +36,11 @@ public class Board extends JPanel {
     private String message = "Game Over";
 
     private Timer timer;
+
+    // LiveScoreFeature
+    public int currentScore = 0;
+    private LiveScoreSubject scoreSubject;
+    private LiveScoreObserver scoreObserver;
 
 
     public Board() {
@@ -74,6 +78,11 @@ public class Board extends JPanel {
 
         player = new Player();
         shot = new Shot();
+
+        // LiveScoreFeature
+        scoreSubject = new LiveScoreSubject();
+        scoreObserver = new LiveScoreObserver(scoreSubject);
+
     }
 
     private void drawAliens(Graphics g) {
@@ -149,6 +158,7 @@ public class Board extends JPanel {
             drawPlayer(g);
             drawShot(g);
             drawBombing(g);
+            drawScore(currentScore, g);
 
         } else {
 
@@ -179,6 +189,17 @@ public class Board extends JPanel {
         g.setFont(small);
         g.drawString(message, (Commons.BOARD_WIDTH - fontMetrics.stringWidth(message)) / 2,
                 Commons.BOARD_WIDTH / 2);
+    }
+
+    // LiveScoreFeature
+    private void drawScore(int currentScore , Graphics g) {
+        scoreSubject.drawScore(currentScore, g);
+    }
+
+    private void scoreUp(int currentScore) {
+        this.currentScore = scoreSubject.scoreUp(currentScore);
+        //g.drawString("Score: "+ currentScore , Commons.BOARD_WIDTH - 90, 20);
+
     }
 
     private void update() {
@@ -215,6 +236,11 @@ public class Board extends JPanel {
                         alien.setDying(true);
                         deaths++;
                         shot.die();
+
+                        // LiveScoreFeature
+                        //currentScore += 1;
+                        //currentScore = scoreSubject.scoreUp(currentScore);
+                        scoreUp(currentScore);
                     }
                 }
             }
