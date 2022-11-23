@@ -15,8 +15,6 @@ Output Image of the implementation is attached below
 ![Live_Score_Implementation_Week2](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/LiveScoreFeature/Other%20Resources/Live%20Score%20Implementation%20Week%202.png)
 
 
-
-
 What do I plan to do today/this week?
 
 For this week, I have planned to add some background music that will run throughout the game. I am planning to use Strategy Design Pattern to implement this feature. By using this pattern, we will be able to apply different music to the game. Additionally, I will try to improve the design and structure of the code as I will work along with different code components of the game.
