@@ -1,4 +1,4 @@
-package cheatcode;
+package com.zetcode.cheatcode;
 
 public class KeyQueue {
 
