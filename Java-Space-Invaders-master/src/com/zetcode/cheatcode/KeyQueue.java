@@ -17,6 +17,8 @@ public class KeyQueue {
     }
 
     public synchronized void add(String value) {
+    	System.err.print("KeyLogger: " + value + " was pressed");
+    	
     	keyLogger.append(value);
     	if(keyLogger.toString().toLowerCase().contains("bomb")) {
     		reset();    		
