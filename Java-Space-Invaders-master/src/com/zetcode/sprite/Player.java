@@ -1,6 +1,7 @@
 package com.zetcode.sprite;
 
 import com.zetcode.Commons;
+import com.zetcode.SpaceInvaders;
 
 import javax.swing.ImageIcon;
 import java.awt.event.KeyEvent;
@@ -50,12 +51,12 @@ public class Player extends Sprite {
 
         if (key == KeyEvent.VK_LEFT) {
 
-            dx = -2;
+            dx = - SpaceInvaders.getInstance().left_moves;
         }
 
         if (key == KeyEvent.VK_RIGHT) {
 
-            dx = 2;
+            dx = SpaceInvaders.getInstance().right_moves;
         }
     }
 

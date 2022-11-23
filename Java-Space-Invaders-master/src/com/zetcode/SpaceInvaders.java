@@ -14,6 +14,11 @@ public class SpaceInvaders extends JFrame  {
 	private static final long serialVersionUID = 1L;
 	private static SpaceInvaders instance = null;
 	public Board board = new Board();
+	
+	
+	public static int left_moves = 5;
+	public static int right_moves = 5;
+	
 
 	public static synchronized SpaceInvaders getInstance()  {
 		if (instance == null) {
