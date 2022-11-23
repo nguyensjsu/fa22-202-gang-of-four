@@ -2,6 +2,9 @@ package com.zetcode.sprite;
 
 import javax.swing.ImageIcon;
 
+import invaders.utilities.SoundEffectTracks;
+import utilites.SoundEffectPlayer;
+
 public class Shot extends Sprite {
 
     public Shot() {
@@ -23,5 +26,7 @@ public class Shot extends Sprite {
 
         int V_SPACE = 1;
         setY(y - V_SPACE);
+        
+        SoundEffectPlayer.Play(SoundEffectTracks.GetTrackPath(SoundEffectTracks.Track.InvaderShoot));
     }
 }

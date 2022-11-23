@@ -3,6 +3,9 @@ package com.zetcode;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 
+import invaders.utilities.SoundEffectPlayer;
+import invaders.utilities.SoundEffectTracks;
+
 public class SpaceInvaders extends JFrame  {
 
 	/**
@@ -37,6 +40,7 @@ public class SpaceInvaders extends JFrame  {
         EventQueue.invokeLater(() -> {
             var ex = SpaceInvaders.getInstance();
             ex.setVisible(true);
+            SoundEffectPlayer.Play(SoundEffectTracks.GetTrackPath(SoundEffectTracks.Track.IntroSound));
         });
     }
 }
