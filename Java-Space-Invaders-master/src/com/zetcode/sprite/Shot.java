@@ -4,6 +4,9 @@ import javax.swing.ImageIcon;
 import com.zetcode.SoundEffectPlayer;
 import invaders.utilities.SoundEffectTracks;
 
+import invaders.utilities.SoundEffectTracks;
+import utilites.SoundEffectPlayer;
+
 public class Shot extends Sprite {
 
     public Shot() {
