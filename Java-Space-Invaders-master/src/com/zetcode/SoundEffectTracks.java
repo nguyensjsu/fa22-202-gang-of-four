@@ -1,4 +1,4 @@
-package utilites;
+package com.zetcode;
 
 import java.util.HashMap;
 import java.util.Map;
