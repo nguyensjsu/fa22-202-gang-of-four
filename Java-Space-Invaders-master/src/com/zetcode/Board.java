@@ -1,5 +1,11 @@
 package com.zetcode;
 
+import com.zetcode.BackgroundMusic.IMusicStrategy;
+import com.zetcode.BackgroundMusic.Music1;
+import com.zetcode.BackgroundMusic.Music2;
+import com.zetcode.BackgroundMusic.Music3;
+import com.zetcode.LiveScore.LiveScoreObserver;
+import com.zetcode.LiveScore.LiveScoreSubject;
 import com.zetcode.sprite.Alien;
 import com.zetcode.sprite.Bomb;
 import com.zetcode.sprite.Player;
@@ -43,6 +49,9 @@ public class Board extends JPanel {
     private LiveScoreObserver scoreObserver;
 
 
+    // BackgroundMusicFeature
+    private IMusicStrategy musicStrategy;
+    
     public Board() {
 
         initBoard();
@@ -82,6 +91,10 @@ public class Board extends JPanel {
         // LiveScoreFeature
         scoreSubject = new LiveScoreSubject();
         scoreObserver = new LiveScoreObserver(scoreSubject);
+        
+        // Start the music
+        musicStrategy = new Music3();
+        musicStrategy.runMusic();
 
     }
 
