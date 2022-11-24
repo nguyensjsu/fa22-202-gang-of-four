@@ -1,4 +1,4 @@
-package com.zetcode;
+package com.zetcode.LiveScore;
 
 import java.util.ArrayList;
 import java.util.List;

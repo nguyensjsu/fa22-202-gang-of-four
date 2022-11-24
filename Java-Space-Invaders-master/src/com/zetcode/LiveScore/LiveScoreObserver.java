@@ -1,6 +1,8 @@
-package com.zetcode;
+package com.zetcode.LiveScore;
 
 import java.awt.Graphics;
+
+import com.zetcode.Commons;
 
 public class LiveScoreObserver implements ILiveScoreObserver {
 
