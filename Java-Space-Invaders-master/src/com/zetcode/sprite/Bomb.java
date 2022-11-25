@@ -1,4 +1,5 @@
 package com.zetcode.sprite;
+
 import javax.swing.ImageIcon;
 
 public class Bomb extends Sprite {
@@ -27,5 +28,5 @@ public class Bomb extends Sprite {
     public boolean isDestroyed() {
         return destroyed;
     }
-    
+
 }

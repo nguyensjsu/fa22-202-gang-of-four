@@ -8,9 +8,11 @@ import com.zetcode.LiveScore.LiveScoreObserver;
 import com.zetcode.LiveScore.LiveScoreSubject;
 import com.zetcode.sprite.Alien;
 import com.zetcode.sprite.Bomb;
+import com.zetcode.sprite.DoubleShot;
+import com.zetcode.sprite.LevelUp;
 import com.zetcode.sprite.Player;
 import com.zetcode.sprite.Shot;
-
+import com.zetcode.sprite.IShot ;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -33,12 +35,15 @@ public class Board extends JPanel {
     private Dimension d;
     private List<Alien> aliens;
     private Player player;
-    private Shot shot;
+    private IShot shot;
+    private int shotType ;
+    private LevelUp lvlUp ;
     private int direction = -1;
     private int deaths = 0;
 
     private boolean inGame = true;
     private String explImg = "src/images/explosion.png";
+    private String player2 = "src/images/Player2.png" ;
     private String message = "Game Over";
 
     private Timer timer;
@@ -87,11 +92,13 @@ public class Board extends JPanel {
 
         player = new Player();
         shot = new Shot();
-
+        shotType = 0 ;
+        lvlUp = new LevelUp(150, 25) ;
+        
         // LiveScoreFeature
         scoreSubject = new LiveScoreSubject();
         scoreObserver = new LiveScoreObserver(scoreSubject);
-        
+       
         // Start the music
         musicStrategy = new Music3();
         musicStrategy.runMusic();
@@ -114,6 +121,16 @@ public class Board extends JPanel {
         }
     }
 
+    private void drawLevelUp( Graphics g ) {
+        if ( lvlUp.isVisible() ) {
+            g.drawImage(lvlUp.getImage(), lvlUp.getX(), lvlUp.getY(), this ) ;
+        }
+
+        if ( lvlUp.isDying() ) {
+            lvlUp.die() ;
+        }
+    }
+
     private void drawPlayer(Graphics g) {
 
         if (player.isVisible()) {
@@ -129,7 +146,6 @@ public class Board extends JPanel {
     }
 
     private void drawShot(Graphics g) {
-
         if (shot.isVisible()) {
 
             g.drawImage(shot.getImage(), shot.getX(), shot.getY(), this);
@@ -171,6 +187,7 @@ public class Board extends JPanel {
             drawPlayer(g);
             drawShot(g);
             drawBombing(g);
+            drawLevelUp(g);
             drawScore(currentScore, g);
 
         } else {
@@ -233,23 +250,34 @@ public class Board extends JPanel {
             int shotX = shot.getX();
             int shotY = shot.getY();
 
-            for (Alien alien : aliens) {
+            //for (Alien alien : aliens) {
+            for (int i = 0; i < aliens.size(); i++) {
+                int alienX = aliens.get(i).getX();
+                int alienY = aliens.get(i).getY();
 
-                int alienX = alien.getX();
-                int alienY = alien.getY();
-
-                if (alien.isVisible() && shot.isVisible()) {
+                if (aliens.get(i).isVisible() && shot.isVisible()) {
                     if (shotX >= (alienX)
                             && shotX <= (alienX + Commons.ALIEN_WIDTH)
                             && shotY >= (alienY)
                             && shotY <= (alienY + Commons.ALIEN_HEIGHT)) {
 
                         var ii = new ImageIcon(explImg);
-                        alien.setImage(ii.getImage());
-                        alien.setDying(true);
+                        aliens.get(i).setImage(ii.getImage());
+                        aliens.get(i).setDying(true);
                         deaths++;
                         shot.die();
-
+                        if (shotType == 1 ) {
+                            if ((aliens.get(i-1).getX()) == (aliens.get(i).getX()-18)) {
+                                aliens.get(i-1).setImage(ii.getImage());
+                                aliens.get(i-1).setDying(true);
+                                deaths++;
+                            }
+                            if ((aliens.get(i+1).getX()) == (aliens.get(i).getX()+18)) {
+                                aliens.get(i+1).setImage(ii.getImage());
+                                aliens.get(i+1).setDying(true);
+                                deaths++;
+                            }
+                        }
                         // LiveScoreFeature
                         //currentScore += 1;
                         //currentScore = scoreSubject.scoreUp(currentScore);
@@ -265,6 +293,24 @@ public class Board extends JPanel {
                 shot.die();
             } else {
                 shot.setY(y);
+            }
+
+            // added for levelup
+            if ( lvlUp.isVisible() && shot.isVisible() ) {
+                int levelUpX = lvlUp.getX() ;
+                int levelUpY = lvlUp.getY() ;
+                if (shotX >= (levelUpX) 
+                        && shotX <= (levelUpX + Commons.LEVELUP_WIDTH)
+                        && shotY >= (levelUpY)
+                        && shotY <= (levelUpY + Commons.LEVELUP_HEIGHT)) {
+                    var ii = new ImageIcon( explImg ) ;
+                    lvlUp.setImage( ii.getImage() );
+                    lvlUp.setDying(true);
+                    shot.die() ;
+                    var iiPlayer2 = new ImageIcon( player2 ) ;
+                    player.setImage( iiPlayer2.getImage() ) ;
+                    shotType = 1 ;
+                }
             }
         }
 
@@ -404,8 +450,13 @@ public class Board extends JPanel {
                 if (inGame) {
 
                     if (!shot.isVisible()) {
-
-                        shot = new Shot(x, y);
+                        if (shotType == 0 ) {
+                            shot = new Shot(x, y);
+                        }
+                        else if (shotType == 1 ) {
+                            shot = new DoubleShot( new Shot( x, y ) ) ;
+                        }
+                        shot.setVisible(inGame);
                     }
                 }
             }
