@@ -4,7 +4,7 @@ import javax.swing.ImageIcon;
 
 public class LevelUp extends Sprite {
 
-    private boolean hit ;
+    //private boolean hit ;
     
     public LevelUp ( int x, int y ) {
         initLevelUp( x, y );
@@ -20,12 +20,12 @@ public class LevelUp extends Sprite {
         setImage( ii.getImage() ) ;
     }
 
-    public void setHit( boolean hit ) {
+    /*public void setHit( boolean hit ) {
         this.hit = hit ;
     }
 
     public boolean isHit() {
         return this.hit ;
-    }
+    }*/
 
 }
