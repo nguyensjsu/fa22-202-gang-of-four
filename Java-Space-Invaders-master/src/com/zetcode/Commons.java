@@ -15,6 +15,9 @@ public interface Commons {
     int ALIEN_INIT_X = 150;
     int ALIEN_INIT_Y = 5;
 
+    int LEVELUP_HEIGHT = 12 ;
+    int LEVELUP_WIDTH = 12 ;
+
     int GO_DOWN = 15;
     int NUMBER_OF_ALIENS_TO_DESTROY = 24;
     int CHANCE = 5;
