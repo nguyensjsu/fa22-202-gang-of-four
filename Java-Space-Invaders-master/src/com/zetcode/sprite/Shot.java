@@ -2,6 +2,8 @@ package com.zetcode.sprite;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import invaders.utilities.SoundEffectTracks;
+import utilites.SoundEffectPlayer;
 
 public class Shot implements IShot {
 
@@ -23,7 +25,7 @@ public class Shot implements IShot {
 
     public void initShot(int x, int y) {
 
-        var shotImg = "src/images/shot.png";
+        var shotImg = "images/shot.png";
         var ii = new ImageIcon(shotImg);
         setImage(ii.getImage());
 
@@ -32,6 +34,8 @@ public class Shot implements IShot {
 
         int V_SPACE = 1;
         setY(y - V_SPACE);
+        
+        SoundEffectPlayer.Play(SoundEffectTracks.GetTrackPath(SoundEffectTracks.Track.InvaderShoot));
     }
 
     public void die() {

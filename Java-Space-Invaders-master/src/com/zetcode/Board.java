@@ -1,5 +1,11 @@
 package com.zetcode;
 
+import com.zetcode.BackgroundMusic.IMusicStrategy;
+import com.zetcode.BackgroundMusic.Music1;
+import com.zetcode.BackgroundMusic.Music2;
+import com.zetcode.BackgroundMusic.Music3;
+import com.zetcode.LiveScore.LiveScoreObserver;
+import com.zetcode.LiveScore.LiveScoreSubject;
 import com.zetcode.sprite.Alien;
 import com.zetcode.sprite.Bomb;
 import com.zetcode.sprite.DoubleShot;
@@ -32,7 +38,6 @@ public class Board extends JPanel {
     private IShot shot;
     private int shotType ;
     private LevelUp lvlUp ;
-    
     private int direction = -1;
     private int deaths = 0;
 
@@ -43,7 +48,15 @@ public class Board extends JPanel {
 
     private Timer timer;
 
+    // LiveScoreFeature
+    public int currentScore = 0;
+    private LiveScoreSubject scoreSubject;
+    private LiveScoreObserver scoreObserver;
 
+
+    // BackgroundMusicFeature
+    private IMusicStrategy musicStrategy;
+    
     public Board() {
 
         initBoard();
@@ -81,6 +94,15 @@ public class Board extends JPanel {
         shot = new Shot();
         shotType = 0 ;
         lvlUp = new LevelUp(150, 25) ;
+        
+        // LiveScoreFeature
+        scoreSubject = new LiveScoreSubject();
+        scoreObserver = new LiveScoreObserver(scoreSubject);
+       
+        // Start the music
+        musicStrategy = new Music3();
+        musicStrategy.runMusic();
+
     }
 
     private void drawAliens(Graphics g) {
@@ -166,6 +188,7 @@ public class Board extends JPanel {
             drawShot(g);
             drawBombing(g);
             drawLevelUp(g);
+            drawScore(currentScore, g);
 
         } else {
 
@@ -196,6 +219,17 @@ public class Board extends JPanel {
         g.setFont(small);
         g.drawString(message, (Commons.BOARD_WIDTH - fontMetrics.stringWidth(message)) / 2,
                 Commons.BOARD_WIDTH / 2);
+    }
+
+    // LiveScoreFeature
+    private void drawScore(int currentScore , Graphics g) {
+        scoreSubject.drawScore(currentScore, g);
+    }
+
+    private void scoreUp(int currentScore) {
+        this.currentScore = scoreSubject.scoreUp(currentScore);
+        //g.drawString("Score: "+ currentScore , Commons.BOARD_WIDTH - 90, 20);
+
     }
 
     private void update() {
@@ -244,6 +278,10 @@ public class Board extends JPanel {
                                 deaths++;
                             }
                         }
+                        // LiveScoreFeature
+                        //currentScore += 1;
+                        //currentScore = scoreSubject.scoreUp(currentScore);
+                        scoreUp(currentScore);
                     }
                 }
             }
