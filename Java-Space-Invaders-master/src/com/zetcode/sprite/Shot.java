@@ -4,8 +4,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 import com.zetcode.utilites.SoundEffectPlayer;
-
-import invaders.utilities.SoundEffectTracks;
+import com.zetcode.utilites.SoundEffectTracks;
 
 public class Shot implements IShot {
 
