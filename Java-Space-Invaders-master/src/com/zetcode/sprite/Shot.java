@@ -2,8 +2,10 @@ package com.zetcode.sprite;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
+
+import com.zetcode.utilites.SoundEffectPlayer;
+
 import invaders.utilities.SoundEffectTracks;
-import utilites.SoundEffectPlayer;
 
 public class Shot implements IShot {
 

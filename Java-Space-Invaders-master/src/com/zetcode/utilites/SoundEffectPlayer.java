@@ -1,4 +1,4 @@
-package utilites;
+package com.zetcode.utilites;
 
 import java.io.File;
 

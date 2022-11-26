@@ -3,8 +3,8 @@ package com.zetcode;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 
-import invaders.utilities.SoundEffectPlayer;
-import invaders.utilities.SoundEffectTracks;
+import com.zetcode.utilites.SoundEffectPlayer;
+import com.zetcode.utilites.SoundEffectTracks;
 
 public class SpaceInvaders extends JFrame  {
 
