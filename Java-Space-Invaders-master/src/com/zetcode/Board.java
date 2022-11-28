@@ -98,7 +98,7 @@ public class Board extends JPanel {
         // LiveScoreFeature
         scoreSubject = new LiveScoreSubject();
         scoreObserver = new LiveScoreObserver(scoreSubject);
-       
+
         // Start the music
         musicStrategy = new Music3();
         musicStrategy.runMusic();
