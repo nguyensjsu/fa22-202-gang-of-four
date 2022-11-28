@@ -6,6 +6,8 @@ import com.zetcode.BackgroundMusic.Music2;
 import com.zetcode.BackgroundMusic.Music3;
 import com.zetcode.LiveScore.LiveScoreObserver;
 import com.zetcode.LiveScore.LiveScoreSubject;
+import com.zetcode.MultipleLives.RemainingLivesObserver;
+import com.zetcode.MultipleLives.RemainingLivesSubject;
 import com.zetcode.sprite.Alien;
 import com.zetcode.sprite.Bomb;
 import com.zetcode.sprite.DoubleShot;
@@ -30,6 +32,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
+
 public class Board extends JPanel {
 
     private Dimension d;
@@ -52,6 +55,12 @@ public class Board extends JPanel {
     public int currentScore = 0;
     private LiveScoreSubject scoreSubject;
     private LiveScoreObserver scoreObserver;
+    
+    // Multiple Lives Feature
+
+    public int remainingLives = 3;
+    private RemainingLivesObserver livesObserver;
+    private  RemainingLivesSubject livesSubject;
 
 
     // BackgroundMusicFeature
@@ -102,6 +111,10 @@ public class Board extends JPanel {
         // Start the music
         musicStrategy = new Music3();
         musicStrategy.runMusic();
+        
+        // Remaining Lives Feature
+        livesSubject = new RemainingLivesSubject(remainingLives);
+        livesObserver = new RemainingLivesObserver(livesSubject);
 
     }
 
@@ -189,6 +202,7 @@ public class Board extends JPanel {
             drawBombing(g);
             drawLevelUp(g);
             drawScore(currentScore, g);
+            drawLives(remainingLives, g);
 
         } else {
 
@@ -230,6 +244,17 @@ public class Board extends JPanel {
         this.currentScore = scoreSubject.scoreUp(currentScore);
         //g.drawString("Score: "+ currentScore , Commons.BOARD_WIDTH - 90, 20);
 
+    }
+    
+    // Remaining Lives Feature
+    private void drawLives(int remainingLives, Graphics g)
+    {
+        livesSubject.drawLives(remainingLives,g);
+    }
+
+    private void reduceLives(int remainingLives)
+    {
+        this.remainingLives = livesSubject.reduceLives(remainingLives);
     }
 
     private void update() {
@@ -393,10 +418,19 @@ public class Board extends JPanel {
                         && bombY >= (playerY)
                         && bombY <= (playerY + Commons.PLAYER_HEIGHT)) {
 
-                    var ii = new ImageIcon(explImg);
-                    player.setImage(ii.getImage());
-                    player.setDying(true);
-                    bomb.setDestroyed(true);
+                	if(livesSubject.liveStatus()>1)
+                    {
+                        reduceLives(livesSubject.liveStatus());
+                        bomb.setDestroyed(true);
+                    }
+                    else {
+
+                        var ii = new ImageIcon(explImg);
+                        player.setImage(ii.getImage());
+                        player.setDying(true);
+                        bomb.setDestroyed(true);
+                        reduceLives(livesSubject.liveStatus());
+                    }
                 }
             }
 
