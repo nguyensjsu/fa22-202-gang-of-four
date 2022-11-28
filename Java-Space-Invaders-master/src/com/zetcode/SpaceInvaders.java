@@ -3,17 +3,31 @@ package com.zetcode;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 
+import com.zetcode.utilites.SoundEffectPlayer;
+import com.zetcode.utilites.SoundEffectTracks;
+
 public class SpaceInvaders extends JFrame  {
 
-    public SpaceInvaders() {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private static SpaceInvaders instance = null;
+	public Board board = new Board();
 
+	public static synchronized SpaceInvaders getInstance()  {
+		if (instance == null) {
+			instance = new SpaceInvaders();
+		}
+		return instance;			
+	}
+	
+    private SpaceInvaders() {
         initUI();
     }
 
     private void initUI() {
-
-        add(new Board());
-
+        add(board);
         setTitle("Space Invaders");
         setSize(Commons.BOARD_WIDTH, Commons.BOARD_HEIGHT);
 
@@ -23,11 +37,10 @@ public class SpaceInvaders extends JFrame  {
     }
 
     public static void main(String[] args) {
-
         EventQueue.invokeLater(() -> {
-
-            var ex = new SpaceInvaders();
+            var ex = SpaceInvaders.getInstance();
             ex.setVisible(true);
+            SoundEffectPlayer.Play(SoundEffectTracks.GetTrackPath(SoundEffectTracks.Track.IntroSound));
         });
     }
 }

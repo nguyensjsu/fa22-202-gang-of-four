@@ -1,4 +1,5 @@
 package com.zetcode.sprite;
+
 import javax.swing.ImageIcon;
 
 public class Bomb extends Sprite {
@@ -15,7 +16,7 @@ public class Bomb extends Sprite {
         this.x = x;
         this.y = y;
 
-        var bombImg = "src/images/bomb.png";
+        var bombImg = "images/bomb.png";
         var ii = new ImageIcon(bombImg);
         setImage(ii.getImage());
     }
@@ -27,5 +28,5 @@ public class Bomb extends Sprite {
     public boolean isDestroyed() {
         return destroyed;
     }
-    
+
 }
