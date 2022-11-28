@@ -14,6 +14,7 @@ import com.zetcode.sprite.DoubleShot;
 import com.zetcode.sprite.LevelUp;
 import com.zetcode.sprite.Player;
 import com.zetcode.sprite.Shot;
+import com.zetcode.utilites.InputHandler;
 import com.zetcode.sprite.IShot ;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -50,12 +51,13 @@ public class Board extends JPanel {
     private String message = "Game Over";
 
     private Timer timer;
+    private InputHandler inputHandler;
 
     // LiveScoreFeature
     public int currentScore = 0;
     private LiveScoreSubject scoreSubject;
     private LiveScoreObserver scoreObserver;
-    
+
     // Multiple Lives Feature
 
     public int remainingLives = 3;
@@ -65,7 +67,7 @@ public class Board extends JPanel {
 
     // BackgroundMusicFeature
     private IMusicStrategy musicStrategy;
-    
+
     public Board() {
 
         initBoard();
@@ -74,7 +76,9 @@ public class Board extends JPanel {
 
     private void initBoard() {
 
-        addKeyListener(new TAdapter());
+        //addKeyListener(new TAdapter());
+        inputHandler = new InputHandler(this);
+
         setFocusable(true);
         d = new Dimension(Commons.BOARD_WIDTH, Commons.BOARD_HEIGHT);
         setBackground(Color.black);
@@ -103,7 +107,7 @@ public class Board extends JPanel {
         shot = new Shot();
         shotType = 0 ;
         lvlUp = new LevelUp(150, 25) ;
-        
+
         // LiveScoreFeature
         scoreSubject = new LiveScoreSubject();
         scoreObserver = new LiveScoreObserver(scoreSubject);
@@ -111,7 +115,7 @@ public class Board extends JPanel {
         // Start the music
         musicStrategy = new Music3();
         musicStrategy.runMusic();
-        
+
         // Remaining Lives Feature
         livesSubject = new RemainingLivesSubject(remainingLives);
         livesObserver = new RemainingLivesObserver(livesSubject);
@@ -245,7 +249,7 @@ public class Board extends JPanel {
         //g.drawString("Score: "+ currentScore , Commons.BOARD_WIDTH - 90, 20);
 
     }
-    
+
     // Remaining Lives Feature
     private void drawLives(int remainingLives, Graphics g)
     {
@@ -324,7 +328,7 @@ public class Board extends JPanel {
             if ( lvlUp.isVisible() && shot.isVisible() ) {
                 int levelUpX = lvlUp.getX() ;
                 int levelUpY = lvlUp.getY() ;
-                if (shotX >= (levelUpX) 
+                if (shotX >= (levelUpX)
                         && shotX <= (levelUpX + Commons.LEVELUP_WIDTH)
                         && shotY >= (levelUpY)
                         && shotY <= (levelUpY + Commons.LEVELUP_HEIGHT)) {
@@ -452,6 +456,31 @@ public class Board extends JPanel {
         repaint();
     }
 
+    public void keyPressed(KeyEvent e) {
+
+        player.keyPressed(e);
+
+        int x = player.getX();
+        int y = player.getY();
+
+        int key = e.getKeyCode();
+
+        if (key == KeyEvent.VK_SPACE) {
+
+            if (inGame) {
+
+                if (!shot.isVisible()) {
+
+                    shot = new Shot(x, y);
+                }
+            }
+        }
+    }
+
+    public void keyReleased(KeyEvent e) {
+        player.keyReleased(e);
+    }
+
     private class GameCycle implements ActionListener {
 
         @Override
@@ -496,4 +525,5 @@ public class Board extends JPanel {
             }
         }
     }
+
 }

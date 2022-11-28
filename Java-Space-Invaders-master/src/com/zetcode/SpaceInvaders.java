@@ -9,19 +9,23 @@ import com.zetcode.utilites.SoundEffectTracks;
 public class SpaceInvaders extends JFrame  {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	private static SpaceInvaders instance = null;
 	public Board board = new Board();
 
+
+	public int left_moves = 2;
+	public int right_moves = 2;
+
 	public static synchronized SpaceInvaders getInstance()  {
 		if (instance == null) {
 			instance = new SpaceInvaders();
 		}
-		return instance;			
+		return instance;
 	}
-	
+
     private SpaceInvaders() {
         initUI();
     }

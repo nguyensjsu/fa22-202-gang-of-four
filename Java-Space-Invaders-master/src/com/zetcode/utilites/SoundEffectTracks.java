@@ -8,7 +8,8 @@ public class SoundEffectTracks {
         IntroSound,
         HeroShoot,
         InvaderShoot,
-        InvaderExplosion
+        InvaderExplosion,
+        SpeedUp
     }
 
     private static Map<Track, String> trackToPathMap =
@@ -17,6 +18,7 @@ public class SoundEffectTracks {
             put(Track.HeroShoot, "resources/qubodup.wav");
             put(Track.InvaderShoot, "resources/laser.wav");
             put(Track.InvaderExplosion, "resources/matthey.wav");
+            put(Track.SpeedUp, "resources/SpeedUp.wav");
         }};
     public static String GetTrackPath(Track track){
         return trackToPathMap.get(track);
