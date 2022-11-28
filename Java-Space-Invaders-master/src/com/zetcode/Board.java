@@ -474,6 +474,8 @@ public class Board extends JPanel {
                     shot = new Shot(x, y);
                 }
             }
+        } else if (e.getKeyCode() == 76 || e.getKeyCode() == 108) {
+            this.remainingLives = livesSubject.increaseLives(remainingLives);
         }
     }
 
@@ -489,41 +491,4 @@ public class Board extends JPanel {
             doGameCycle();
         }
     }
-
-    private class TAdapter extends KeyAdapter {
-
-        @Override
-        public void keyReleased(KeyEvent e) {
-
-            player.keyReleased(e);
-        }
-
-        @Override
-        public void keyPressed(KeyEvent e) {
-
-            player.keyPressed(e);
-
-            int x = player.getX();
-            int y = player.getY();
-
-            int key = e.getKeyCode();
-
-            if (key == KeyEvent.VK_SPACE) {
-
-                if (inGame) {
-
-                    if (!shot.isVisible()) {
-                        if (shotType == 0 ) {
-                            shot = new Shot(x, y);
-                        }
-                        else if (shotType == 1 ) {
-                            shot = new DoubleShot( new Shot( x, y ) ) ;
-                        }
-                        shot.setVisible(inGame);
-                    }
-                }
-            }
-        }
-    }
-
 }

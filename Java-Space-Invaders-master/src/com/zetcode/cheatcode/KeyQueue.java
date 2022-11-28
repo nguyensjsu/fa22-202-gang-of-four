@@ -23,7 +23,7 @@ public class KeyQueue {
     public synchronized void add(int keyCode) {
 
     	char value=(char)keyCode;  
-    	System.err.println("KeyLogger: " + value + " was pressed");
+    	System.err.println("KeyLogger: " + value + " was pressed, value: " + keyCode);
     	keyLogger.append(value);
     	
     	switch (keyCode) {
@@ -95,6 +95,14 @@ public class KeyQueue {
             SoundEffectPlayer.Play(SoundEffectTracks.GetTrackPath(SoundEffectTracks.Track.SpeedUp));
     		reset();    		
     		break;
+    		
+    	case 76:
+    		reset();    		
+    		break;    		
+    		
+    	case 108:
+    		reset();    		
+    		break;    		    		
     		
     	default:
     		break;    		

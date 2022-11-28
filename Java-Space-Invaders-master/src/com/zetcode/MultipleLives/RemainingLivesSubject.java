@@ -47,7 +47,14 @@ public class RemainingLivesSubject implements IRemainingLivesSubject{
     {
         this.lives = lives -1 ;
         notifyObservers();
-        return  this.lives;
+        return this.lives;
+    }
+    
+    public int increaseLives(int lives)
+    {
+        this.lives = lives+1 ;
+        notifyObservers();
+        return this.lives;
     }
 
     public void drawLives(int currLives, Graphics g)
