@@ -199,6 +199,7 @@ public class Board extends JPanel {
             drawBombing(g);
             drawLevelUp(g);
             drawScore(currentScore, g);
+            drawLives(remainingLives, g);
 
         } else {
 
