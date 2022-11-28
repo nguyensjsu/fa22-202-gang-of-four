@@ -40,7 +40,7 @@ public class SpaceInvaders extends JFrame  {
         EventQueue.invokeLater(() -> {
             var ex = SpaceInvaders.getInstance();
             ex.setVisible(true);
-            SoundEffectPlayer.Play(SoundEffectTracks.GetTrackPath(SoundEffectTracks.Track.IntroSound));
+            //SoundEffectPlayer.Play(SoundEffectTracks.GetTrackPath(SoundEffectTracks.Track.IntroSound));
         });
     }
 }
