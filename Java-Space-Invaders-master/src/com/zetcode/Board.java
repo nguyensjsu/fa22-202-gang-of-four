@@ -415,10 +415,19 @@ public class Board extends JPanel {
                         && bombY >= (playerY)
                         && bombY <= (playerY + Commons.PLAYER_HEIGHT)) {
 
-                    var ii = new ImageIcon(explImg);
-                    player.setImage(ii.getImage());
-                    player.setDying(true);
-                    bomb.setDestroyed(true);
+                	if(livesSubject.liveStatus()>1)
+                    {
+                        reduceLives(livesSubject.liveStatus());
+                        bomb.setDestroyed(true);
+                    }
+                    else {
+
+                        var ii = new ImageIcon(explImg);
+                        player.setImage(ii.getImage());
+                        player.setDying(true);
+                        bomb.setDestroyed(true);
+                        reduceLives(livesSubject.liveStatus());
+                    }
                 }
             }
 
