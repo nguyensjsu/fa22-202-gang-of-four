@@ -242,6 +242,17 @@ public class Board extends JPanel {
         //g.drawString("Score: "+ currentScore , Commons.BOARD_WIDTH - 90, 20);
 
     }
+    
+    // Remaining Lives Feature
+    private void drawLives(int remainingLives, Graphics g)
+    {
+        livesSubject.drawLives(remainingLives,g);
+    }
+
+    private void reduceLives(int remainingLives)
+    {
+        this.remainingLives = livesSubject.reduceLives(remainingLives);
+    }
 
     private void update() {
 
