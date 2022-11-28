@@ -6,6 +6,8 @@ import com.zetcode.BackgroundMusic.Music2;
 import com.zetcode.BackgroundMusic.Music3;
 import com.zetcode.LiveScore.LiveScoreObserver;
 import com.zetcode.LiveScore.LiveScoreSubject;
+import com.zetcode.MultipleLives.RemainingLivesObserver;
+import com.zetcode.MultipleLives.RemainingLivesSubject;
 import com.zetcode.sprite.Alien;
 import com.zetcode.sprite.Bomb;
 import com.zetcode.sprite.DoubleShot;
@@ -29,6 +31,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+
 
 public class Board extends JPanel {
 

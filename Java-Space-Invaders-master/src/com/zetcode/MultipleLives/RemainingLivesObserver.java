@@ -1,6 +1,8 @@
-package com.zetcode;
+package com.zetcode.MultipleLives;
 
 import java.awt.Graphics;
+
+import com.zetcode.Commons;
 
 public class RemainingLivesObserver implements IRemainingLivesObserver {
 

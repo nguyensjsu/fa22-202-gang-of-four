@@ -1,4 +1,4 @@
-package com.zetcode;
+package com.zetcode.MultipleLives;
 
 import java.awt.Graphics;
 
