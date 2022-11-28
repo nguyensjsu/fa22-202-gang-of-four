@@ -52,6 +52,12 @@ public class Board extends JPanel {
     public int currentScore = 0;
     private LiveScoreSubject scoreSubject;
     private LiveScoreObserver scoreObserver;
+    
+    // Multiple Lives Feature
+
+    public int remainingLives = 3;
+    private RemainingLivesObserver livesObserver;
+    private  RemainingLivesSubject livesSubject;
 
 
     // BackgroundMusicFeature
@@ -102,6 +108,10 @@ public class Board extends JPanel {
         // Start the music
         musicStrategy = new Music3();
         musicStrategy.runMusic();
+        
+        // Remaining Lives Feature
+        livesSubject = new RemainingLivesSubject(remainingLives);
+        livesObserver = new RemainingLivesObserver(livesSubject);
 
     }
 
