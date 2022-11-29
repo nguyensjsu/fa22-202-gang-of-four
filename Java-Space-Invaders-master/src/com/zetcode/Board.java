@@ -296,12 +296,12 @@ public class Board extends JPanel {
                         deaths++;
                         shot.die();
                         if (shotType == 1 ) {
-                            if ((aliens.get(i-1).getX()) == (aliens.get(i).getX()-18)) {
+                            if ((i < 0) && (aliens.get(i-1).getX()) == (aliens.get(i).getX()-18)) {
                                 aliens.get(i-1).setImage(ii.getImage());
                                 aliens.get(i-1).setDying(true);
                                 deaths++;
                             }
-                            if ((aliens.get(i+1).getX()) == (aliens.get(i).getX()+18)) {
+                            if ((i < 23 ) && (aliens.get(i+1).getX()) == (aliens.get(i).getX()+18)) {
                                 aliens.get(i+1).setImage(ii.getImage());
                                 aliens.get(i+1).setDying(true);
                                 deaths++;
