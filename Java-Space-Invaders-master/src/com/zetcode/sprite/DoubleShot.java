@@ -1,6 +1,7 @@
 package com.zetcode.sprite;
 
 import javax.swing.ImageIcon ;
+import java.awt.Image;
 
 public class DoubleShot extends ShotDecorator {
 
@@ -11,8 +12,11 @@ public class DoubleShot extends ShotDecorator {
     }
 
     public void doubleShotImg() {
-        var shotImg = "images/shot2.png";
+        var shotImg = "Java-Space-Invaders-master/src/images/shot2.png";
         var ii = new ImageIcon(shotImg);
+        Image tempImg = ii.getImage();
+        Image tempImg2 = tempImg.getScaledInstance(3, 12, java.awt.Image.SCALE_SMOOTH);
+        ii = new ImageIcon(tempImg2);
         setImage(ii.getImage());
     }
 

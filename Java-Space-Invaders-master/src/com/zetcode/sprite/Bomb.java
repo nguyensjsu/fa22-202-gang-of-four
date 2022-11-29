@@ -16,7 +16,7 @@ public class Bomb extends Sprite {
         this.x = x;
         this.y = y;
 
-        var bombImg = "images/bomb.png";
+        var bombImg = "Java-Space-Invaders-master/src/images/bomb.png";
         var ii = new ImageIcon(bombImg);
         setImage(ii.getImage());
     }

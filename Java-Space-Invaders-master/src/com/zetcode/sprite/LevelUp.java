@@ -1,6 +1,7 @@
 package com.zetcode.sprite;
 
 import javax.swing.ImageIcon;
+import java.awt.Image ;
 
 public class LevelUp extends Sprite {
 
@@ -14,8 +15,11 @@ public class LevelUp extends Sprite {
         this.x = x ;
         this.y = y ;
 
-        var levelUpImg = "images/LevelUpIcon.png" ;
+        var levelUpImg = "Java-Space-Invaders-master/src/images/LevelUpIcon.png" ;
         var ii = new ImageIcon( levelUpImg ) ;
+        Image tempImg = ii.getImage();
+        Image tempImg1 = tempImg.getScaledInstance(12, 12, java.awt.Image.SCALE_SMOOTH) ;
+        ii = new ImageIcon(tempImg1);
 
         setImage( ii.getImage() ) ;
     }

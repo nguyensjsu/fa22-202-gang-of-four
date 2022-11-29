@@ -17,6 +17,7 @@ import com.zetcode.sprite.Player;
 import com.zetcode.sprite.Shot;
 import com.zetcode.sprite.IShot ;
 import javax.swing.ImageIcon;
+import java.awt.Image;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import java.awt.Color;
@@ -46,10 +47,9 @@ public class Board extends JPanel {
     private int deaths = 0;
 
     private boolean inGame = true;
-    private String explImg = "images/explosion.png";
-    private String player2 = "images/Player2.png" ;
+    private String explImg = "Java-Space-Invaders-master/src/images/explosion.png";
+    private String player2 = "Java-Space-Invaders-master/src/images/Player2.png" ;
     private String message = "Game Over";
-
     private Timer timer;
     private InputHandler inputHandler;
 
@@ -298,12 +298,12 @@ public class Board extends JPanel {
                         deaths++;
                         shot.die();
                         if (shotType == 1 ) {
-                            if ((aliens.get(i-1).getX()) == (aliens.get(i).getX()-18)) {
+                            if ((i < 0) && (aliens.get(i-1).getX()) == (aliens.get(i).getX()-18)) {
                                 aliens.get(i-1).setImage(ii.getImage());
                                 aliens.get(i-1).setDying(true);
                                 deaths++;
                             }
-                            if ((aliens.get(i+1).getX()) == (aliens.get(i).getX()+18)) {
+                            if ((i < 23 ) && (aliens.get(i+1).getX()) == (aliens.get(i).getX()+18)) {
                                 aliens.get(i+1).setImage(ii.getImage());
                                 aliens.get(i+1).setDying(true);
                                 deaths++;
@@ -339,6 +339,9 @@ public class Board extends JPanel {
                     lvlUp.setDying(true);
                     shot.die() ;
                     var iiPlayer2 = new ImageIcon( player2 ) ;
+                    Image tempImg = iiPlayer2.getImage() ;
+                    Image tempImg2 = tempImg.getScaledInstance(12, 12 , java.awt.Image.SCALE_SMOOTH);
+                    iiPlayer2 = new ImageIcon( tempImg2) ;
                     player.setImage( iiPlayer2.getImage() ) ;
                     shotType = 1 ;
                 }

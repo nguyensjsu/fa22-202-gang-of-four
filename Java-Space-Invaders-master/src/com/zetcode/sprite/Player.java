@@ -24,7 +24,7 @@ public class Player extends Sprite implements KeyEventDispenseChain {
 
     private void initPlayer() {
 
-        var playerImg = "images/player.png";
+        var playerImg = "Java-Space-Invaders-master/src/images/player.png";
         var ii = new ImageIcon(playerImg);
 
         width = ii.getImage().getWidth(null);

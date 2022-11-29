@@ -14,11 +14,11 @@ public class SoundEffectTracks {
 
     private static Map<Track, String> trackToPathMap =
         new HashMap<Track, String>(){{
-            put(Track.IntroSound, "resources/carter.wav");
-            put(Track.HeroShoot, "resources/qubodup.wav");
-            put(Track.InvaderShoot, "resources/laser.wav");
-            put(Track.InvaderExplosion, "resources/matthey.wav");
-            put(Track.SpeedUp, "resources/SpeedUp.wav");
+            put(Track.IntroSound, "Java-Space-Invaders-master/src/resources/carter.wav");
+            put(Track.HeroShoot, "Java-Space-Invaders-master/src/resources/qubodup.wav");
+            put(Track.InvaderShoot, "Java-Space-Invaders-master/src/resources/laser.wav");
+            put(Track.InvaderExplosion, "Java-Space-Invaders-master/src/resources/matthey.wav");
+            put(Track.SpeedUp, "Java-Space-Invaders-master/src/resources/SpeedUp.wav");
         }};
     public static String GetTrackPath(Track track){
         return trackToPathMap.get(track);

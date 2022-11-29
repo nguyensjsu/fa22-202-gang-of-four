@@ -26,7 +26,7 @@ public class Shot implements IShot {
 
     public void initShot(int x, int y) {
 
-        var shotImg = "images/shot.png";
+        var shotImg = "Java-Space-Invaders-master/src/images/shot.png";
         var ii = new ImageIcon(shotImg);
         setImage(ii.getImage());
 
