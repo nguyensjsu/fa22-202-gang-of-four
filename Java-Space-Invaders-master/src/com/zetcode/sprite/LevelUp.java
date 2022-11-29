@@ -1,12 +1,15 @@
 package com.zetcode.sprite;
 
 import javax.swing.ImageIcon;
+
+import com.zetcode.cheatcode.KeyEventDispenseChain;
+
 import java.awt.Image ;
 
 public class LevelUp extends Sprite {
 
     //private boolean hit ;
-    
+
     public LevelUp ( int x, int y ) {
         initLevelUp( x, y );
     }
@@ -31,5 +34,4 @@ public class LevelUp extends Sprite {
     public boolean isHit() {
         return this.hit ;
     }*/
-
 }

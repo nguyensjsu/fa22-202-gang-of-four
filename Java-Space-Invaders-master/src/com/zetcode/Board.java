@@ -9,6 +9,7 @@ import com.zetcode.LiveScore.LiveScoreSubject;
 import com.zetcode.MultipleLives.RemainingLivesObserver;
 import com.zetcode.MultipleLives.RemainingLivesSubject;
 import com.zetcode.cheatcode.InputHandler;
+import com.zetcode.cheatcode.KeyEventDispenseChain;
 import com.zetcode.sprite.Alien;
 import com.zetcode.sprite.Bomb;
 import com.zetcode.sprite.DoubleShot;
@@ -35,7 +36,7 @@ import java.util.List;
 import java.util.Random;
 
 
-public class Board extends JPanel {
+public class Board extends JPanel implements KeyEventDispenseChain {
 
     private Dimension d;
     private List<Alien> aliens;
@@ -68,6 +69,9 @@ public class Board extends JPanel {
     // BackgroundMusicFeature
     private IMusicStrategy musicStrategy;
 
+    
+	private KeyEventDispenseChain chain;    
+    
     public Board() {
 
         initBoard();
@@ -122,6 +126,7 @@ public class Board extends JPanel {
         inputHandler = new InputHandler(this);
         
         player.setNextChain(livesSubject);
+        livesSubject.setNextChain(this);
     }
 
     private void drawAliens(Graphics g) {
@@ -269,7 +274,7 @@ public class Board extends JPanel {
 
             inGame = false;
             timer.stop();
-            message = "Game won!";
+            message = "Congratulations!!! You won.";
         }
 
         // player
@@ -500,4 +505,35 @@ public class Board extends JPanel {
             doGameCycle();
         }
     }
+    
+    
+    public void levelUpByCheatCode()
+    {
+        var ii = new ImageIcon( explImg ) ;
+        lvlUp.setImage( ii.getImage() );
+        lvlUp.setDying(true);
+        shot.die() ;
+        var iiPlayer2 = new ImageIcon( player2 ) ;
+        Image tempImg = iiPlayer2.getImage() ;
+        Image tempImg2 = tempImg.getScaledInstance(12, 12 , java.awt.Image.SCALE_SMOOTH);
+        iiPlayer2 = new ImageIcon( tempImg2) ;
+        player.setImage( iiPlayer2.getImage() ) ;
+        shotType = 1 ;
+    }
+    
+    @Override
+	public void setNextChain(KeyEventDispenseChain nextChain) {
+		this.chain=nextChain;
+	}
+	
+	@Override
+	public void keyEvent(int key) {
+		// TODO Auto-generated method stub		
+		System.err.println(key);
+		if (key == 16 || key == 66) {
+			levelUpByCheatCode();
+        } else if (this.chain!=null) {		
+        	this.chain.keyEvent(key);		
+        }
+	}
 }
