@@ -458,7 +458,9 @@ public class Board extends JPanel {
 
     public void keyPressed(KeyEvent e) {
 
-        player.keyPressed(e);
+    	
+    	
+    	player.keyPressed(e);
 
         int x = player.getX();
         int y = player.getY();
@@ -470,8 +472,13 @@ public class Board extends JPanel {
             if (inGame) {
 
                 if (!shot.isVisible()) {
-
-                    shot = new Shot(x, y);
+                    if (shotType == 0 ) {
+                        shot = new Shot(x, y);
+                    }
+                    else if (shotType == 1 ) {
+                        shot = new DoubleShot( new Shot( x, y ) ) ;
+                    }
+                    shot.setVisible(inGame);
                 }
             }
         } else if (e.getKeyCode() == 76 || e.getKeyCode() == 108) {
@@ -482,6 +489,7 @@ public class Board extends JPanel {
     public void keyReleased(KeyEvent e) {
         player.keyReleased(e);
     }
+    
 
     private class GameCycle implements ActionListener {
 
