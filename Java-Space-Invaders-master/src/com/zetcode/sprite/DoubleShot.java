@@ -11,7 +11,7 @@ public class DoubleShot extends ShotDecorator {
     }
 
     public void doubleShotImg() {
-        var shotImg = "images/shot2.png";
+        var shotImg = "Java-Space-Invaders-master/src/images/shot2.png";
         var ii = new ImageIcon(shotImg);
         setImage(ii.getImage());
     }

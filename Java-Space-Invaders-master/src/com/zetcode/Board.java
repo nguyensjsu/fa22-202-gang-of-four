@@ -46,10 +46,9 @@ public class Board extends JPanel {
     private int deaths = 0;
 
     private boolean inGame = true;
-    private String explImg = "images/explosion.png";
-    private String player2 = "images/Player2.png" ;
+    private String explImg = "Java-Space-Invaders-master/src/images/explosion.png";
+    private String player2 = "Java-Space-Invaders-master/src/images/Player2.png" ;
     private String message = "Game Over";
-
     private Timer timer;
     private InputHandler inputHandler;
 

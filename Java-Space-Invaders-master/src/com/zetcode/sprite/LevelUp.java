@@ -14,7 +14,7 @@ public class LevelUp extends Sprite {
         this.x = x ;
         this.y = y ;
 
-        var levelUpImg = "images/LevelUpIcon.png" ;
+        var levelUpImg = "Java-Space-Invaders-master/src/images/LevelUpIcon.png" ;
         var ii = new ImageIcon( levelUpImg ) ;
 
         setImage( ii.getImage() ) ;
