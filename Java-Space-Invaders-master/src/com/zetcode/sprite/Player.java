@@ -1,15 +1,14 @@
 package com.zetcode.sprite;
 
+import java.awt.event.KeyEvent;
+
+import javax.swing.ImageIcon;
+
 import com.zetcode.Commons;
 import com.zetcode.SpaceInvaders;
 import com.zetcode.cheatcode.KeyEventDispenseChain;
 import com.zetcode.utilites.SoundEffectPlayer;
 import com.zetcode.utilites.SoundEffectTracks;
-
-import javax.swing.ImageIcon;
-
-import java.awt.KeyEventDispatcher;
-import java.awt.event.KeyEvent;
 
 public class Player extends Sprite implements KeyEventDispenseChain {
 

@@ -1,10 +1,8 @@
 package com.zetcode;
 
 import java.awt.EventQueue;
-import javax.swing.JFrame;
 
-import com.zetcode.utilites.SoundEffectPlayer;
-import com.zetcode.utilites.SoundEffectTracks;
+import javax.swing.JFrame;
 
 public class SpaceInvaders extends JFrame  {
 

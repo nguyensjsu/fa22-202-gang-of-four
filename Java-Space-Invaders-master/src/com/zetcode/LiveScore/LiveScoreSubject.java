@@ -1,8 +1,8 @@
 package com.zetcode.LiveScore;
 
+import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
-import java.awt.Graphics;
 
 public class LiveScoreSubject implements ILiveScoreSubject {
 

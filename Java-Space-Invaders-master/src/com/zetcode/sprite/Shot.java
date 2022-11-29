@@ -1,6 +1,7 @@
 package com.zetcode.sprite;
 
 import java.awt.Image;
+
 import javax.swing.ImageIcon;
 
 import com.zetcode.utilites.SoundEffectPlayer;

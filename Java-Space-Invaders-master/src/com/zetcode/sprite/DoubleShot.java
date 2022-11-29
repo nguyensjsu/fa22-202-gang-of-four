@@ -1,7 +1,8 @@
 package com.zetcode.sprite;
 
-import javax.swing.ImageIcon ;
 import java.awt.Image;
+
+import javax.swing.ImageIcon ;
 
 public class DoubleShot extends ShotDecorator {
 

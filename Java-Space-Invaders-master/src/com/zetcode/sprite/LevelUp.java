@@ -1,10 +1,8 @@
 package com.zetcode.sprite;
 
-import javax.swing.ImageIcon;
-
-import com.zetcode.cheatcode.KeyEventDispenseChain;
-
 import java.awt.Image ;
+
+import javax.swing.ImageIcon;
 
 public class LevelUp extends Sprite {
 
