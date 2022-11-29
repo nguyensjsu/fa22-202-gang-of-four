@@ -17,6 +17,7 @@ import com.zetcode.sprite.Shot;
 import com.zetcode.utilites.InputHandler;
 import com.zetcode.sprite.IShot ;
 import javax.swing.ImageIcon;
+import java.awt.Image;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import java.awt.Color;
@@ -336,6 +337,9 @@ public class Board extends JPanel {
                     lvlUp.setDying(true);
                     shot.die() ;
                     var iiPlayer2 = new ImageIcon( player2 ) ;
+                    Image tempImg = iiPlayer2.getImage() ;
+                    Image tempImg2 = tempImg.getScaledInstance(12, 12 , java.awt.Image.SCALE_SMOOTH);
+                    iiPlayer2 = new ImageIcon( tempImg2) ;
                     player.setImage( iiPlayer2.getImage() ) ;
                     shotType = 1 ;
                 }
