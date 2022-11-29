@@ -62,7 +62,7 @@ public class Board extends JPanel {
 
     public int remainingLives = 3;
     private RemainingLivesObserver livesObserver;
-    private  RemainingLivesSubject livesSubject;
+    private RemainingLivesSubject livesSubject;
 
 
     // BackgroundMusicFeature
