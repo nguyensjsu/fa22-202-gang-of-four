@@ -6,14 +6,18 @@ import com.zetcode.BackgroundMusic.Music2;
 import com.zetcode.BackgroundMusic.Music3;
 import com.zetcode.LiveScore.LiveScoreObserver;
 import com.zetcode.LiveScore.LiveScoreSubject;
+import com.zetcode.MultipleLives.RemainingLivesObserver;
+import com.zetcode.MultipleLives.RemainingLivesSubject;
 import com.zetcode.sprite.Alien;
 import com.zetcode.sprite.Bomb;
 import com.zetcode.sprite.DoubleShot;
 import com.zetcode.sprite.LevelUp;
 import com.zetcode.sprite.Player;
 import com.zetcode.sprite.Shot;
+import com.zetcode.utilites.InputHandler;
 import com.zetcode.sprite.IShot ;
 import javax.swing.ImageIcon;
+import java.awt.Image;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import java.awt.Color;
@@ -30,6 +34,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
+
 public class Board extends JPanel {
 
     private Dimension d;
@@ -42,21 +47,27 @@ public class Board extends JPanel {
     private int deaths = 0;
 
     private boolean inGame = true;
-    private String explImg = "src/images/explosion.png";
-    private String player2 = "src/images/Player2.png" ;
+    private String explImg = "Java-Space-Invaders-master/src/images/explosion.png";
+    private String player2 = "Java-Space-Invaders-master/src/images/Player2.png" ;
     private String message = "Game Over";
-
     private Timer timer;
+    private InputHandler inputHandler;
 
     // LiveScoreFeature
     public int currentScore = 0;
     private LiveScoreSubject scoreSubject;
     private LiveScoreObserver scoreObserver;
 
+    // Multiple Lives Feature
+
+    public int remainingLives = 3;
+    private RemainingLivesObserver livesObserver;
+    private  RemainingLivesSubject livesSubject;
+
 
     // BackgroundMusicFeature
     private IMusicStrategy musicStrategy;
-    
+
     public Board() {
 
         initBoard();
@@ -65,7 +76,9 @@ public class Board extends JPanel {
 
     private void initBoard() {
 
-        addKeyListener(new TAdapter());
+        //addKeyListener(new TAdapter());
+        inputHandler = new InputHandler(this);
+
         setFocusable(true);
         d = new Dimension(Commons.BOARD_WIDTH, Commons.BOARD_HEIGHT);
         setBackground(Color.black);
@@ -94,14 +107,18 @@ public class Board extends JPanel {
         shot = new Shot();
         shotType = 0 ;
         lvlUp = new LevelUp(150, 25) ;
-        
+
         // LiveScoreFeature
         scoreSubject = new LiveScoreSubject();
         scoreObserver = new LiveScoreObserver(scoreSubject);
-       
+
         // Start the music
         musicStrategy = new Music3();
         musicStrategy.runMusic();
+
+        // Remaining Lives Feature
+        livesSubject = new RemainingLivesSubject(remainingLives);
+        livesObserver = new RemainingLivesObserver(livesSubject);
 
     }
 
@@ -189,6 +206,7 @@ public class Board extends JPanel {
             drawBombing(g);
             drawLevelUp(g);
             drawScore(currentScore, g);
+            drawLives(remainingLives, g);
 
         } else {
 
@@ -230,6 +248,17 @@ public class Board extends JPanel {
         this.currentScore = scoreSubject.scoreUp(currentScore);
         //g.drawString("Score: "+ currentScore , Commons.BOARD_WIDTH - 90, 20);
 
+    }
+
+    // Remaining Lives Feature
+    private void drawLives(int remainingLives, Graphics g)
+    {
+        livesSubject.drawLives(remainingLives,g);
+    }
+
+    private void reduceLives(int remainingLives)
+    {
+        this.remainingLives = livesSubject.reduceLives(remainingLives);
     }
 
     private void update() {
@@ -299,7 +328,7 @@ public class Board extends JPanel {
             if ( lvlUp.isVisible() && shot.isVisible() ) {
                 int levelUpX = lvlUp.getX() ;
                 int levelUpY = lvlUp.getY() ;
-                if (shotX >= (levelUpX) 
+                if (shotX >= (levelUpX)
                         && shotX <= (levelUpX + Commons.LEVELUP_WIDTH)
                         && shotY >= (levelUpY)
                         && shotY <= (levelUpY + Commons.LEVELUP_HEIGHT)) {
@@ -308,6 +337,9 @@ public class Board extends JPanel {
                     lvlUp.setDying(true);
                     shot.die() ;
                     var iiPlayer2 = new ImageIcon( player2 ) ;
+                    Image tempImg = iiPlayer2.getImage() ;
+                    Image tempImg2 = tempImg.getScaledInstance(12, 12 , java.awt.Image.SCALE_SMOOTH);
+                    iiPlayer2 = new ImageIcon( tempImg2) ;
                     player.setImage( iiPlayer2.getImage() ) ;
                     shotType = 1 ;
                 }
@@ -393,10 +425,19 @@ public class Board extends JPanel {
                         && bombY >= (playerY)
                         && bombY <= (playerY + Commons.PLAYER_HEIGHT)) {
 
-                    var ii = new ImageIcon(explImg);
-                    player.setImage(ii.getImage());
-                    player.setDying(true);
-                    bomb.setDestroyed(true);
+                	if(livesSubject.liveStatus()>1)
+                    {
+                        reduceLives(livesSubject.liveStatus());
+                        bomb.setDestroyed(true);
+                    }
+                    else {
+
+                        var ii = new ImageIcon(explImg);
+                        player.setImage(ii.getImage());
+                        player.setDying(true);
+                        bomb.setDestroyed(true);
+                        reduceLives(livesSubject.liveStatus());
+                    }
                 }
             }
 
@@ -418,48 +459,47 @@ public class Board extends JPanel {
         repaint();
     }
 
+    public void keyPressed(KeyEvent e) {
+
+    	
+    	
+    	player.keyPressed(e);
+
+        int x = player.getX();
+        int y = player.getY();
+
+        int key = e.getKeyCode();
+
+        if (key == KeyEvent.VK_SPACE) {
+
+            if (inGame) {
+
+                if (!shot.isVisible()) {
+                    if (shotType == 0 ) {
+                        shot = new Shot(x, y);
+                    }
+                    else if (shotType == 1 ) {
+                        shot = new DoubleShot( new Shot( x, y ) ) ;
+                    }
+                    shot.setVisible(inGame);
+                }
+            }
+        } else if (e.getKeyCode() == 76 || e.getKeyCode() == 108) {
+            this.remainingLives = livesSubject.increaseLives(remainingLives);
+        }
+    }
+
+    public void keyReleased(KeyEvent e) {
+        player.keyReleased(e);
+    }
+    
+
     private class GameCycle implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
 
             doGameCycle();
-        }
-    }
-
-    private class TAdapter extends KeyAdapter {
-
-        @Override
-        public void keyReleased(KeyEvent e) {
-
-            player.keyReleased(e);
-        }
-
-        @Override
-        public void keyPressed(KeyEvent e) {
-
-            player.keyPressed(e);
-
-            int x = player.getX();
-            int y = player.getY();
-
-            int key = e.getKeyCode();
-
-            if (key == KeyEvent.VK_SPACE) {
-
-                if (inGame) {
-
-                    if (!shot.isVisible()) {
-                        if (shotType == 0 ) {
-                            shot = new Shot(x, y);
-                        }
-                        else if (shotType == 1 ) {
-                            shot = new DoubleShot( new Shot( x, y ) ) ;
-                        }
-                        shot.setVisible(inGame);
-                    }
-                }
-            }
         }
     }
 }
