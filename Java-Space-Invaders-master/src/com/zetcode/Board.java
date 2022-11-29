@@ -8,13 +8,13 @@ import com.zetcode.LiveScore.LiveScoreObserver;
 import com.zetcode.LiveScore.LiveScoreSubject;
 import com.zetcode.MultipleLives.RemainingLivesObserver;
 import com.zetcode.MultipleLives.RemainingLivesSubject;
+import com.zetcode.cheatcode.InputHandler;
 import com.zetcode.sprite.Alien;
 import com.zetcode.sprite.Bomb;
 import com.zetcode.sprite.DoubleShot;
 import com.zetcode.sprite.LevelUp;
 import com.zetcode.sprite.Player;
 import com.zetcode.sprite.Shot;
-import com.zetcode.utilites.InputHandler;
 import com.zetcode.sprite.IShot ;
 import javax.swing.ImageIcon;
 import java.awt.Image;
@@ -62,7 +62,7 @@ public class Board extends JPanel {
 
     public int remainingLives = 3;
     private RemainingLivesObserver livesObserver;
-    private  RemainingLivesSubject livesSubject;
+    private RemainingLivesSubject livesSubject;
 
 
     // BackgroundMusicFeature
@@ -77,7 +77,6 @@ public class Board extends JPanel {
     private void initBoard() {
 
         //addKeyListener(new TAdapter());
-        inputHandler = new InputHandler(this);
 
         setFocusable(true);
         d = new Dimension(Commons.BOARD_WIDTH, Commons.BOARD_HEIGHT);
@@ -119,7 +118,10 @@ public class Board extends JPanel {
         // Remaining Lives Feature
         livesSubject = new RemainingLivesSubject(remainingLives);
         livesObserver = new RemainingLivesObserver(livesSubject);
-
+        
+        inputHandler = new InputHandler(this);
+        
+        player.setNextChain(livesSubject);
     }
 
     private void drawAliens(Graphics g) {
@@ -460,8 +462,6 @@ public class Board extends JPanel {
     }
 
     public void keyPressed(KeyEvent e) {
-
-    	
     	
     	player.keyPressed(e);
 
@@ -484,8 +484,6 @@ public class Board extends JPanel {
                     shot.setVisible(inGame);
                 }
             }
-        } else if (e.getKeyCode() == 76 || e.getKeyCode() == 108) {
-            this.remainingLives = livesSubject.increaseLives(remainingLives);
         }
     }
 

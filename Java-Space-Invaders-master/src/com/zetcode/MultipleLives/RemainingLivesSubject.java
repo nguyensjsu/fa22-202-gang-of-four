@@ -2,14 +2,21 @@ package com.zetcode.MultipleLives;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.awt.Graphics;
 
-public class RemainingLivesSubject implements IRemainingLivesSubject{
+import com.zetcode.cheatcode.KeyEventDispenseChain;
+
+import java.awt.Graphics;
+import java.awt.KeyEventDispatcher;
+import java.awt.event.KeyEvent;
+
+public class RemainingLivesSubject implements IRemainingLivesSubject, KeyEventDispenseChain {
 
     private List<RemainingLivesObserver> observers;
 
     private int lives;
 
+	private KeyEventDispenseChain chain;
+    
     public RemainingLivesSubject(int lives)
     {
         this.lives = lives;
@@ -66,5 +73,19 @@ public class RemainingLivesSubject implements IRemainingLivesSubject{
     {
         return  this.lives;
     }
-
+	
+    @Override
+	public void setNextChain(KeyEventDispenseChain nextChain) {
+		this.chain=nextChain;
+	}
+	
+	@Override
+	public void keyEvent(int key) {
+		// TODO Auto-generated method stub		
+		if (key == 76 || key == 108) {
+			this.increaseLives(this.lives);
+        } else if (this.chain!=null) {		
+        	this.chain.keyEvent(key);		
+        }
+	}
 }

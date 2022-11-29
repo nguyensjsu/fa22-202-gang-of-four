@@ -2,14 +2,21 @@ package com.zetcode.sprite;
 
 import com.zetcode.Commons;
 import com.zetcode.SpaceInvaders;
+import com.zetcode.cheatcode.KeyEventDispenseChain;
+import com.zetcode.utilites.SoundEffectPlayer;
+import com.zetcode.utilites.SoundEffectTracks;
 
 import javax.swing.ImageIcon;
+
+import java.awt.KeyEventDispatcher;
 import java.awt.event.KeyEvent;
 
-public class Player extends Sprite {
+public class Player extends Sprite implements KeyEventDispenseChain {
 
     private int width;
 
+	private KeyEventDispenseChain chain;
+	
     public Player() {
 
         initPlayer();
@@ -58,6 +65,8 @@ public class Player extends Sprite {
 
             dx = SpaceInvaders.getInstance().right_moves;
         }
+        
+        this.keyEvent(key);
     }
 
     public void keyReleased(KeyEvent e) {
@@ -74,4 +83,79 @@ public class Player extends Sprite {
             dx = 0;
         }
     }
+
+	@Override
+	public void setNextChain(KeyEventDispenseChain nextChain) {
+		this.chain=nextChain;
+	}
+
+	@Override
+	public void keyEvent(int key) {
+		// TODO Auto-generated method stub
+		
+		switch (key) {
+    	case 49:
+    		SpaceInvaders.getInstance().left_moves = key-48;
+    		SpaceInvaders.getInstance().right_moves = key-48;   
+            SoundEffectPlayer.Play(SoundEffectTracks.GetTrackPath(SoundEffectTracks.Track.SpeedUp));            
+    		return;
+
+    	case 50:
+    		SpaceInvaders.getInstance().left_moves = key-48;
+    		SpaceInvaders.getInstance().right_moves = key-48; 
+            SoundEffectPlayer.Play(SoundEffectTracks.GetTrackPath(SoundEffectTracks.Track.SpeedUp));    		
+            return;
+    		
+    	case 51:
+    		SpaceInvaders.getInstance().left_moves = key-48;
+    		SpaceInvaders.getInstance().right_moves = key-48; 
+            SoundEffectPlayer.Play(SoundEffectTracks.GetTrackPath(SoundEffectTracks.Track.SpeedUp));    		
+            return;
+    		
+    	case 52:
+    		SpaceInvaders.getInstance().left_moves = key-48;
+    		SpaceInvaders.getInstance().right_moves = key-48; 
+            SoundEffectPlayer.Play(SoundEffectTracks.GetTrackPath(SoundEffectTracks.Track.SpeedUp));    		
+            return;
+    		
+    	case 53:
+    		SpaceInvaders.getInstance().left_moves = key-48;
+    		SpaceInvaders.getInstance().right_moves = key-48;    		
+            SoundEffectPlayer.Play(SoundEffectTracks.GetTrackPath(SoundEffectTracks.Track.SpeedUp));	
+            return;
+
+    	case 54:
+    		SpaceInvaders.getInstance().left_moves = key-48;
+    		SpaceInvaders.getInstance().right_moves = key-48; 
+            SoundEffectPlayer.Play(SoundEffectTracks.GetTrackPath(SoundEffectTracks.Track.SpeedUp));    		
+            return;    		
+    		
+    	case 55:
+    		SpaceInvaders.getInstance().left_moves = key-48;
+    		SpaceInvaders.getInstance().right_moves = key-48;  
+            SoundEffectPlayer.Play(SoundEffectTracks.GetTrackPath(SoundEffectTracks.Track.SpeedUp));    		
+            return;
+    		
+    	case 56:
+    		SpaceInvaders.getInstance().left_moves = key-48;
+    		SpaceInvaders.getInstance().right_moves = key-48; 
+            SoundEffectPlayer.Play(SoundEffectTracks.GetTrackPath(SoundEffectTracks.Track.SpeedUp));
+            return;
+    		
+    	case 57:
+    		SpaceInvaders.getInstance().left_moves = key-48;
+    		SpaceInvaders.getInstance().right_moves = key-48;    		
+            SoundEffectPlayer.Play(SoundEffectTracks.GetTrackPath(SoundEffectTracks.Track.SpeedUp));
+            return;
+    		
+    	case 58:
+    		SpaceInvaders.getInstance().left_moves = key-48;
+    		SpaceInvaders.getInstance().right_moves = key-48;    		
+            SoundEffectPlayer.Play(SoundEffectTracks.GetTrackPath(SoundEffectTracks.Track.SpeedUp));
+            return;
+    	}
+		
+		if (this.chain!=null)
+			this.chain.keyEvent(key);
+	}
 }
