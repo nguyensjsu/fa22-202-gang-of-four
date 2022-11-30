@@ -2,8 +2,8 @@ package com.zetcode;
 
 public interface Commons {
 
-    int BOARD_WIDTH = 358;
-    int BOARD_HEIGHT = 350;
+    int BOARD_WIDTH = 458;
+    int BOARD_HEIGHT = 400;
     int BORDER_RIGHT = 30;
     int BORDER_LEFT = 5;
 
@@ -13,7 +13,7 @@ public interface Commons {
     int ALIEN_HEIGHT = 12;
     int ALIEN_WIDTH = 12;
     int ALIEN_INIT_X = 150;
-    int ALIEN_INIT_Y = 5;
+    int ALIEN_INIT_Y = 45;
 
     int LEVELUP_HEIGHT = 12 ;
     int LEVELUP_WIDTH = 12 ;
@@ -24,4 +24,7 @@ public interface Commons {
     int DELAY = 17;
     int PLAYER_WIDTH = 15;
     int PLAYER_HEIGHT = 10;
+    int SCORE_INIT_Y = 55;
+    int PERIOD = 10;
+    int JBUTTON_HEIGHT = 30;
 }
