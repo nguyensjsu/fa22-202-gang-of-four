@@ -290,6 +290,7 @@ public class Board extends JPanel implements KeyEventDispenseChain {
                     musicStrategy.closeMusic();
                     musicStrategy = new Music3();
                     musicStrategy.runMusic();
+                    musicIsPlaying = true;
                 } catch (Exception io_E) {
                     // TODO Auto-generated catch block
                     io_E.printStackTrace();
