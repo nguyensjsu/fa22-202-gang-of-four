@@ -24,8 +24,9 @@ Don't have any blockers now.
 
 <b>Core XP Value- Courage </b>
 <br>
-* Encourage team members to do peer review.
-* The courage to speak up, put ego aside, be vulnerable. 
-* Code is visible to everyone all the time on an XP project.
-* Courage to put your work out there for others to review, inspect, and edit.
+My core XP Value for this week is Courage.
+* Encourage team to do peer review.
+* Requested team to speak up, put ego aside, be flexible. 
+* Asked team to make the code changes visible to everyone all the time during meetings.
+* Cheer and speed up our assigned works at the same time also ensure review, inspect, and edit other members work.
 </br>
