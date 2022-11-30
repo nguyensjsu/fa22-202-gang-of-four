@@ -27,6 +27,6 @@ public class LiveScoreObserver implements ILiveScoreObserver {
     }
 
     public void drawScore(int currentScore, Graphics g) {
-        g.drawString("Score: "+ currentScore , Commons.BOARD_WIDTH - 90, 20);
+        g.drawString("Score: "+ currentScore , Commons.BOARD_WIDTH - 90, Commons.SCORE_INIT_Y);
     }
 }
