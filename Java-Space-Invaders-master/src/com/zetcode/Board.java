@@ -302,15 +302,17 @@ public class Board extends JPanel implements KeyEventDispenseChain {
                         deaths++;
                         shot.die();
                         if (shotType == 1 ) {
-                            if ((i < 0) && (aliens.get(i-1).getX()) == (aliens.get(i).getX()-18)) {
+                            if ((i > 0) && ((aliens.get(i-1).getX()) == (aliens.get(i).getX()-18))) {
                                 aliens.get(i-1).setImage(ii.getImage());
                                 aliens.get(i-1).setDying(true);
                                 deaths++;
+                                scoreUp(currentScore);
                             }
-                            if ((i < 23 ) && (aliens.get(i+1).getX()) == (aliens.get(i).getX()+18)) {
+                            if ((i < 23) && ((aliens.get(i+1).getX()) == (aliens.get(i).getX()+18))) {
                                 aliens.get(i+1).setImage(ii.getImage());
                                 aliens.get(i+1).setDying(true);
                                 deaths++;
+                                scoreUp(currentScore);
                             }
                         }
                         // LiveScoreFeature
