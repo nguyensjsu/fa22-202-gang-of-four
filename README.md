@@ -1,4 +1,4 @@
-# Team Project (Replace with your Team Name and Journal)
+# Team Project (Group of Four - Space Invaders)
 
 
 ### **Individual Journals**
