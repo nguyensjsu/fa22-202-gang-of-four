@@ -1,14 +1,33 @@
 package com.zetcode;
 
+import com.zetcode.BackgroundMusic.IMusicStrategy;
+import com.zetcode.BackgroundMusic.Music1;
+import com.zetcode.BackgroundMusic.Music2;
+import com.zetcode.BackgroundMusic.Music3;
+import com.zetcode.LiveScore.LiveScoreObserver;
+import com.zetcode.LiveScore.LiveScoreSubject;
+import com.zetcode.sprite.Alien;
+import com.zetcode.sprite.Bomb;
+import com.zetcode.sprite.Player;
+import com.zetcode.sprite.Shot;
+import javax.sound.sampled.*;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+import javax.swing.Timer;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -68,9 +87,21 @@ public class Board extends JPanel implements KeyEventDispenseChain {
     // BackgroundMusicFeature
     private IMusicStrategy musicStrategy;
 
-    
-	private KeyEventDispenseChain chain;    
-    
+
+    // JButtonFeature
+    private static boolean musicIsPlaying = false;
+    private static File f = null;
+    private static Clip c = null;
+    private static AudioInputStream as = null;
+    boolean restartClicked = false;
+    JButton pauseButton = new JButton("Pause");
+    JButton resumeButton = new JButton("Resume");
+    JButton restartButton = new JButton("Restart");
+    JButton pauseMusic = new JButton("P Music");
+    JButton toggleMusic = new JButton("N Music");
+
+	private KeyEventDispenseChain chain;
+
     public Board() {
 
         initBoard();
@@ -79,8 +110,37 @@ public class Board extends JPanel implements KeyEventDispenseChain {
 
     private void initBoard() {
 
-        //addKeyListener(new TAdapter());
+        PauseHandler settingHandler = new PauseHandler();
+        ResumeHandler resumeHandler = new ResumeHandler();
+        RestartHandler restartHandler = new RestartHandler();
+        PauseMusicHandler pauseMusicHandler = new PauseMusicHandler();
+        ToggleMusicHandler toggleMusicHandler = new ToggleMusicHandler();
 
+        JPanel buttonPane = new JPanel();
+        buttonPane.setLayout(new GridLayout(0, 5));
+        buttonPane.setPreferredSize(new Dimension(Commons.BOARD_WIDTH, Commons.JBUTTON_HEIGHT));
+        JPanel blank = new JPanel();
+        blank.setVisible(false);
+        buttonPane.add(pauseButton);
+        buttonPane.add(restartButton);
+        buttonPane.add(pauseMusic);
+        buttonPane.add(toggleMusic);
+
+        add(buttonPane);
+
+        pauseButton.addActionListener(settingHandler);
+        resumeButton.addActionListener(resumeHandler);
+        restartButton.addActionListener(restartHandler);
+        pauseMusic.addActionListener(pauseMusicHandler);
+        toggleMusic.addActionListener(toggleMusicHandler);
+
+
+        pauseButton.setFocusable(false);
+        restartButton.setFocusable(false);
+        resumeButton.setFocusable(false);
+        pauseMusic.setFocusable(false);
+        toggleMusic.setFocusable(false);
+        addKeyListener(new TAdapter());
         setFocusable(true);
         d = new Dimension(Commons.BOARD_WIDTH, Commons.BOARD_HEIGHT);
         setBackground(Color.black);
@@ -91,6 +151,175 @@ public class Board extends JPanel implements KeyEventDispenseChain {
         gameInit();
     }
 
+    // JButtonFeature
+    private class PauseHandler implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            pauseGame();
+        }
+    }
+
+    // JButtonFeature
+    private void pauseGame() {
+        Container parent = pauseButton.getParent();
+        try {
+            Board.stopMusic();
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        parent.add(resumeButton, 0, 0);
+        parent.remove(pauseButton);
+        parent.revalidate();
+        parent.repaint();
+        timer.stop();
+    }
+    // JButtonFeature
+    private class ResumeHandler implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            resumeGame();
+        }
+    }
+    // JButtonFeature
+    private void resumeGame() {
+        Container parent = resumeButton.getParent();
+        try {
+            //dataset.doSort();
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        parent.add(pauseButton, 0, 0);
+        parent.remove(resumeButton);
+        parent.revalidate();
+        parent.repaint();
+        timer.stop();
+        timer = new Timer(Commons.PERIOD, new GameCycle());
+        timer.start();
+    }
+    // JButtonFeature
+    private class RestartHandler implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+//            try {
+            //speedLevel.setState("x1");
+            restartClicked = true;
+            inGame = true;
+            timer.stop();
+            //currentMode.gameInit();
+//                gameInit();
+            var si = new SpaceInvaders();
+            si.setVisible(true);
+            //dataset.changeStrategy(new GameMusic());
+            message = "Game Over!";
+            try {
+                //dataset.doSort();
+            } catch (Exception e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+//            }
+//            catch (IOException er) {
+//                er.printStackTrace();
+//            }
+
+        }
+    }
+    // JButtonFeature
+    private class PauseMusicHandler implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+            if(musicIsPlaying){
+                try {
+                    Board.stopMusic();
+                } catch (Exception io_E) {
+                    // TODO Auto-generated catch block
+                    io_E.printStackTrace();
+                }
+            }
+            else{
+                try {
+                    Board.playMusic();
+                } catch (Exception io_E) {
+                    // TODO Auto-generated catch block
+                    io_E.printStackTrace();
+                }
+            }
+        }
+    }
+    // JButtonFeature
+    private class ToggleMusicHandler implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if(musicStrategy == null) {
+                musicStrategy = new Music1();
+            }
+            if(musicIsPlaying){
+                try {
+                    if(musicStrategy.toString() == "music1"){
+                        Board.stopMusic();
+                        musicStrategy.closeMusic();
+                        musicStrategy = new Music2();
+                    }
+                    else if(musicStrategy.toString() == "music2"){
+                        Board.stopMusic();
+                        musicStrategy.closeMusic();
+                        musicStrategy = new Music3();
+                    }
+                    else if(musicStrategy.toString() == "music3"){
+                        Board.stopMusic();
+                        musicStrategy.closeMusic();
+                        musicStrategy = new Music1();
+                    }
+                    musicStrategy.runMusic();
+                    musicIsPlaying = true;
+                } catch (Exception io_E) {
+                    // TODO Auto-generated catch block
+                    io_E.printStackTrace();
+                }
+            }
+            else{
+                try {
+                    musicStrategy.closeMusic();
+                    musicStrategy = new Music3();
+                    musicStrategy.runMusic();
+                } catch (Exception io_E) {
+                    // TODO Auto-generated catch block
+                    io_E.printStackTrace();
+                }
+            }
+
+        }
+
+    }
+    public static void playMusic() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        f = new File("resources/music1.wav").getAbsoluteFile();
+        as = AudioSystem.getAudioInputStream(f);
+        c = AudioSystem.getClip();
+        c.open(as);
+        // Plays audio once
+        c.start();
+        c.loop(Clip.LOOP_CONTINUOUSLY);
+        musicIsPlaying = true;
+
+    }
+    public static void stopMusic() throws Exception {
+
+        if (c != null) // do not nest it to the previous condition ...
+        {
+            musicIsPlaying = false;
+            c.stop();
+            c.flush();
+            c.close();
+        }
+    }
 
     private void gameInit() {
 
@@ -113,17 +342,17 @@ public class Board extends JPanel implements KeyEventDispenseChain {
         // LiveScoreFeature
         scoreSubject = new LiveScoreSubject();
         scoreObserver = new LiveScoreObserver(scoreSubject);
-
-        // Start the music
-        musicStrategy = new Music3();
-        musicStrategy.runMusic();
+        
+//        Start the music
+//        musicStrategy = new Music3();
+//        musicStrategy.runMusic();
 
         // Remaining Lives Feature
         livesSubject = new RemainingLivesSubject(remainingLives);
         livesObserver = new RemainingLivesObserver(livesSubject);
-        
+
         inputHandler = new InputHandler(this);
-        
+
         player.setNextChain(livesSubject);
         livesSubject.setNextChain(this);
     }
@@ -468,7 +697,7 @@ public class Board extends JPanel implements KeyEventDispenseChain {
     }
 
     public void keyPressed(KeyEvent e) {
-    	
+
     	player.keyPressed(e);
 
         int x = player.getX();
@@ -496,7 +725,7 @@ public class Board extends JPanel implements KeyEventDispenseChain {
     public void keyReleased(KeyEvent e) {
         player.keyReleased(e);
     }
-    
+
 
     private class GameCycle implements ActionListener {
 
@@ -506,8 +735,8 @@ public class Board extends JPanel implements KeyEventDispenseChain {
             doGameCycle();
         }
     }
-    
-    
+
+
     public void levelUpByCheatCode()
     {
         var ii = new ImageIcon( explImg ) ;
@@ -521,20 +750,20 @@ public class Board extends JPanel implements KeyEventDispenseChain {
         player.setImage( iiPlayer2.getImage() ) ;
         shotType = 1 ;
     }
-    
+
     @Override
 	public void setNextChain(KeyEventDispenseChain nextChain) {
 		this.chain=nextChain;
 	}
-	
+
 	@Override
 	public void keyEvent(int key) {
-		// TODO Auto-generated method stub		
+		// TODO Auto-generated method stub
 		System.err.println(key);
 		if (key == 16 || key == 66) {
 			levelUpByCheatCode();
-        } else if (this.chain!=null) {		
-        	this.chain.keyEvent(key);		
+        } else if (this.chain!=null) {
+        	this.chain.keyEvent(key);
         }
 	}
 }
