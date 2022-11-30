@@ -15,7 +15,8 @@
 We followed tthe process and roles of extreme programming. XP framework normally involves 5 phases or stages of the development process that iterate continuously:
 
 ## Planning 
-* The first stage, is when the customer meets the development team and presents the requirements in the form of user stories to describe the desired result. The team then estimates the stories and creates a release plan broken down into iterations needed to cover the required functionality part after part. If one or more of the stories can’t be estimated, so-called spikes can be introduced which means that further research is needed.
+* The first stage team estimates the stories and creates a development plan broken down into iterations needed to cover the required functionality part after part. 
+* If one or more of the stories can’t be estimated, so-called spikes can be introduced which means that further research is needed.
 
 ## Designing 
 * A part of the planning process, but can be set apart to emphasize its importance. 
@@ -23,7 +24,7 @@ We followed tthe process and roles of extreme programming. XP framework normally
 * A good design brings logic and structure to the system and allows to avoid unnecessary complexities and redundancies.
 
 ## Coding 
-This phase during which the actual code is created by implementing specific XP practices such as coding standards, pair programming, continuous integration, and collective code ownership.
+* This phase during which the actual code is created by implementing specific XP practices such as coding standards, pair programming, continuous integration, and collective code ownership.
 
 ## Testing
 * A core of extreme programming. 
