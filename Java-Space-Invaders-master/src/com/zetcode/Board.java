@@ -6,6 +6,7 @@ import com.zetcode.BackgroundMusic.Music2;
 import com.zetcode.BackgroundMusic.Music3;
 import com.zetcode.LiveScore.LiveScoreObserver;
 import com.zetcode.LiveScore.LiveScoreSubject;
+import com.zetcode.Command.*;
 import com.zetcode.sprite.Alien;
 import com.zetcode.sprite.Bomb;
 import com.zetcode.sprite.Player;
@@ -13,6 +14,7 @@ import com.zetcode.sprite.Shot;
 import javax.sound.sampled.*;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
@@ -85,11 +87,11 @@ public class Board extends JPanel implements KeyEventDispenseChain {
 
 
     // BackgroundMusicFeature
-    private IMusicStrategy musicStrategy;
+    public IMusicStrategy musicStrategy;
 
 
     // JButtonFeature
-    private static boolean musicIsPlaying = false;
+    public static boolean isMusicPlaying = false;
     private static File f = null;
     private static Clip c = null;
     private static AudioInputStream as = null;
@@ -119,8 +121,8 @@ public class Board extends JPanel implements KeyEventDispenseChain {
         JPanel buttonPane = new JPanel();
         buttonPane.setLayout(new GridLayout(0, 5));
         buttonPane.setPreferredSize(new Dimension(Commons.BOARD_WIDTH, Commons.JBUTTON_HEIGHT));
-        JPanel blank = new JPanel();
-        blank.setVisible(false);
+//        JPanel panel = new JPanel();
+//        panel.setVisible(false);
         buttonPane.add(pauseButton);
         buttonPane.add(restartButton);
         buttonPane.add(pauseMusic);
@@ -163,17 +165,29 @@ public class Board extends JPanel implements KeyEventDispenseChain {
     // JButtonFeature
     private void pauseGame() {
         Container parent = pauseButton.getParent();
+//        try {
+//            Board.stopMusic();
+//        } catch (Exception e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        }
+//        parent.add(resumeButton, 0, 0);
+//        parent.remove(pauseButton);
+//        parent.revalidate();
+//        parent.repaint();
+//        timer.stop();
         try {
-            Board.stopMusic();
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            // Pause feature
+            ButtonControl control = new ButtonControl();
+            PauseButton pb = new PauseButton(parent, pauseButton, resumeButton, timer);
+            ICommand pause = new PauseButtonPressed(pb);
+            //switch on
+            control.setCommand(pause);
+            control.pressButton();
         }
-        parent.add(resumeButton, 0, 0);
-        parent.remove(pauseButton);
-        parent.revalidate();
-        parent.repaint();
-        timer.stop();
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
     }
     // JButtonFeature
     private class ResumeHandler implements ActionListener {
@@ -188,6 +202,7 @@ public class Board extends JPanel implements KeyEventDispenseChain {
         Container parent = resumeButton.getParent();
         try {
             //dataset.doSort();
+            playMusic();
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -199,34 +214,26 @@ public class Board extends JPanel implements KeyEventDispenseChain {
         timer.stop();
         timer = new Timer(Commons.PERIOD, new GameCycle());
         timer.start();
+
     }
     // JButtonFeature
     private class RestartHandler implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-//            try {
-            //speedLevel.setState("x1");
-            restartClicked = true;
-            inGame = true;
-            timer.stop();
-            //currentMode.gameInit();
-//                gameInit();
-            var si = new SpaceInvaders();
-            si.setVisible(true);
-            //dataset.changeStrategy(new GameMusic());
-            message = "Game Over!";
-            try {
-                //dataset.doSort();
-            } catch (Exception e1) {
-                // TODO Auto-generated catch block
-                e1.printStackTrace();
-            }
-//            }
-//            catch (IOException er) {
-//                er.printStackTrace();
-//            }
 
+            try {
+                // Restart feature
+                ButtonControl control = new ButtonControl();
+                RestartButton rb = new RestartButton();
+                ICommand restart = new RestartButtonPressed(rb);
+                //switch on
+                control.setCommand(restart);
+                control.pressButton();
+            }
+            catch (Exception ex){
+                ex.printStackTrace();
+            }
         }
     }
     // JButtonFeature
@@ -235,9 +242,13 @@ public class Board extends JPanel implements KeyEventDispenseChain {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            if(musicIsPlaying){
+            if(isMusicPlaying){
                 try {
                     Board.stopMusic();
+                    if(musicStrategy!= null){
+                        musicStrategy.closeMusic();
+                        isMusicPlaying = false;
+                    }
                 } catch (Exception io_E) {
                     // TODO Auto-generated catch block
                     io_E.printStackTrace();
@@ -261,7 +272,7 @@ public class Board extends JPanel implements KeyEventDispenseChain {
             if(musicStrategy == null) {
                 musicStrategy = new Music1();
             }
-            if(musicIsPlaying){
+            if(isMusicPlaying){
                 try {
                     if(musicStrategy.toString() == "music1"){
                         Board.stopMusic();
@@ -279,7 +290,7 @@ public class Board extends JPanel implements KeyEventDispenseChain {
                         musicStrategy = new Music1();
                     }
                     musicStrategy.runMusic();
-                    musicIsPlaying = true;
+                    isMusicPlaying = true;
                 } catch (Exception io_E) {
                     // TODO Auto-generated catch block
                     io_E.printStackTrace();
@@ -290,7 +301,7 @@ public class Board extends JPanel implements KeyEventDispenseChain {
                     musicStrategy.closeMusic();
                     musicStrategy = new Music3();
                     musicStrategy.runMusic();
-                    musicIsPlaying = true;
+                    isMusicPlaying = true;
                 } catch (Exception io_E) {
                     // TODO Auto-generated catch block
                     io_E.printStackTrace();
@@ -308,14 +319,14 @@ public class Board extends JPanel implements KeyEventDispenseChain {
         // Plays audio once
         c.start();
         c.loop(Clip.LOOP_CONTINUOUSLY);
-        musicIsPlaying = true;
+        isMusicPlaying = true;
 
     }
     public static void stopMusic() throws Exception {
 
         if (c != null) // do not nest it to the previous condition ...
         {
-            musicIsPlaying = false;
+            isMusicPlaying = false;
             c.stop();
             c.flush();
             c.close();
@@ -343,10 +354,17 @@ public class Board extends JPanel implements KeyEventDispenseChain {
         // LiveScoreFeature
         scoreSubject = new LiveScoreSubject();
         scoreObserver = new LiveScoreObserver(scoreSubject);
-        
+
 //        Start the music
 //        musicStrategy = new Music3();
 //        musicStrategy.runMusic();
+//
+//        // Restart feature
+//        ButtonControl control = new ButtonControl();
+//        RestartButton rb = new RestartButton();
+//        ICommand restart = new RestartButtonPressed(rb);
+//        //switch on
+//        control.setCommand(restart);
 
         // Remaining Lives Feature
         livesSubject = new RemainingLivesSubject(remainingLives);
