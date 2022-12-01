@@ -179,7 +179,7 @@ public class Board extends JPanel implements KeyEventDispenseChain {
         try {
             // Pause feature
             ButtonControl control = new ButtonControl();
-            PauseButton pb = new PauseButton(parent, pauseButton, resumeButton, timer);
+            PauseButton pb = new PauseButton(parent, pauseButton, resumeButton, timer, musicStrategy);
             ICommand pause = new PauseButtonPressed(pb);
             //switch on
             control.setCommand(pause);
@@ -202,7 +202,29 @@ public class Board extends JPanel implements KeyEventDispenseChain {
         Container parent = resumeButton.getParent();
         try {
             //dataset.doSort();
-            playMusic();
+//            if(!isMusicPlaying){
+//                playMusic();
+//            }
+            if(isMusicPlaying){
+                try {
+                    Board.stopMusic();
+                    if(musicStrategy!= null){
+                        musicStrategy.closeMusic();
+                        isMusicPlaying = false;
+                    }
+                } catch (Exception io_E) {
+                    // TODO Auto-generated catch block
+                    io_E.printStackTrace();
+                }
+            }
+            else{
+                try {
+                    Board.playMusic();
+                } catch (Exception io_E) {
+                    // TODO Auto-generated catch block
+                    io_E.printStackTrace();
+                }
+            }
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
