@@ -334,6 +334,11 @@ public class Board extends JPanel implements KeyEventDispenseChain {
 
     }
     public static void playMusic() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        try {
+            stopMusic();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         f = new File("resources/music1.wav").getAbsoluteFile();
         as = AudioSystem.getAudioInputStream(f);
         c = AudioSystem.getClip();
@@ -356,6 +361,36 @@ public class Board extends JPanel implements KeyEventDispenseChain {
     }
 
     private void gameInit() {
+
+        try {
+            playMusic();
+        } catch (UnsupportedAudioFileException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (LineUnavailableException e) {
+            throw new RuntimeException(e);
+        }
+//        if(isMusicPlaying){
+//            try {
+//                Board.stopMusic();
+//                if(musicStrategy!= null){
+//                    musicStrategy.closeMusic();
+//                    isMusicPlaying = false;
+//                }
+//            } catch (Exception io_E) {
+//                // TODO Auto-generated catch block
+//                io_E.printStackTrace();
+//            }
+//        }
+//        else{
+//            try {
+//                Board.playMusic();
+//            } catch (Exception io_E) {
+//                // TODO Auto-generated catch block
+//                io_E.printStackTrace();
+//            }
+//        }
 
         aliens = new ArrayList<>();
 
