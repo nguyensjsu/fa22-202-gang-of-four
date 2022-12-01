@@ -9,4 +9,4 @@ public class ButtonControl {
     public void pressButton(){
         command.execute();
     }
-}å
+}
