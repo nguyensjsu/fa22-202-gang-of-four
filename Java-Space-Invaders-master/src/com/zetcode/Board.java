@@ -65,8 +65,8 @@ public class Board extends JPanel implements KeyEventDispenseChain {
 
     // LiveScoreFeature
     public int currentScore = 0;
-    private LiveScoreSubject scoreSubject;
-    private LiveScoreObserver scoreObserver;
+    private LiveScoreSubject scoreSubject = new LiveScoreSubject(0);
+    private LiveScoreObserver scoreObserver = new LiveScoreObserver(scoreSubject);
 
     // Multiple Lives Feature
 
@@ -357,9 +357,12 @@ public class Board extends JPanel implements KeyEventDispenseChain {
         shotType = 0 ;
         lvlUp = new LevelUp(150, 25) ;
 
+        // observer
+        scoreSubject.attach(scoreObserver);
+
         // LiveScoreFeature
-        scoreSubject = new LiveScoreSubject();
-        scoreObserver = new LiveScoreObserver(scoreSubject);
+//        scoreSubject = new LiveScoreSubject();
+//        scoreObserver = new LiveScoreObserver(scoreSubject);
 
         // Remaining Lives Feature
         livesSubject = new RemainingLivesSubject(remainingLives);
@@ -443,6 +446,7 @@ public class Board extends JPanel implements KeyEventDispenseChain {
         g.setColor(Color.black);
         g.fillRect(0, 0, d.width, d.height);
         g.setColor(Color.green);
+        g.drawString("Score: " + scoreObserver.getScore(), Commons.BOARD_WIDTH - 90, 60);
 
         if (inGame) {
 
@@ -454,7 +458,7 @@ public class Board extends JPanel implements KeyEventDispenseChain {
             drawShot(g);
             drawBombing(g);
             drawLevelUp(g);
-            drawScore(currentScore, g);
+//            drawScore(currentScore, g);
             drawLives(remainingLives, g);
 
         } else {
@@ -489,16 +493,6 @@ public class Board extends JPanel implements KeyEventDispenseChain {
     }
 
     // LiveScoreFeature
-    private void drawScore(int currentScore , Graphics g) {
-        scoreSubject.drawScore(currentScore, g);
-    }
-
-    // LiveScoreFeature
-    private void scoreUp(int currentScore) {
-        this.currentScore = scoreSubject.scoreUp(currentScore);
-        //g.drawString("Score: "+ currentScore , Commons.BOARD_WIDTH - 90, 20);
-
-    }
 
     // Remaining Lives Feature
     private void drawLives(int remainingLives, Graphics g)
@@ -512,6 +506,9 @@ public class Board extends JPanel implements KeyEventDispenseChain {
     }
 
     private void update() {
+
+        // observer
+        int tempScore = scoreObserver.getScore();
 
         if (deaths == Commons.NUMBER_OF_ALIENS_TO_DESTROY) {
 
@@ -550,18 +547,20 @@ public class Board extends JPanel implements KeyEventDispenseChain {
                                 aliens.get(i-1).setImage(ii.getImage());
                                 aliens.get(i-1).setDying(true);
                                 deaths++;
-                                scoreUp(currentScore);
+//                                scoreUp(currentScore);
                             }
                             if ((i < 23) && ((aliens.get(i+1).getX()) == (aliens.get(i).getX()+18))) {
                                 aliens.get(i+1).setImage(ii.getImage());
                                 aliens.get(i+1).setDying(true);
                                 deaths++;
-                                scoreUp(currentScore);
+//                                scoreUp(currentScore);
                             }
                         }
-                        scoreUp(currentScore);
+
                     }
                 }
+                // added score keeper
+                scoreSubject.setState(deaths);
             }
 
             int y = shot.getY();
