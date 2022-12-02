@@ -87,7 +87,7 @@ public class Board extends JPanel implements KeyEventDispenseChain {
 
 
     // BackgroundMusicFeature
-    public IMusicStrategy musicStrategy;
+    public static IMusicStrategy musicStrategy;
 
 
     // JButtonFeature
@@ -304,13 +304,13 @@ public class Board extends JPanel implements KeyEventDispenseChain {
                         musicStrategy.closeMusic();
                         musicStrategy = new Music3();
                     }
-                    else if(musicStrategy.toString() == "music3"){
+                    else{
                         Board.stopMusic();
                         musicStrategy.closeMusic();
                         musicStrategy = new Music1();
                     }
                     musicStrategy.runMusic();
-                    isMusicPlaying = true;
+//                    isMusicPlaying = true;
                 } catch (Exception io_E) {
                     // TODO Auto-generated catch block
                     io_E.printStackTrace();
@@ -321,7 +321,7 @@ public class Board extends JPanel implements KeyEventDispenseChain {
                     musicStrategy.closeMusic();
                     musicStrategy = new Music3();
                     musicStrategy.runMusic();
-                    isMusicPlaying = true;
+//                    isMusicPlaying = true;
                 } catch (Exception io_E) {
                     // TODO Auto-generated catch block
                     io_E.printStackTrace();
@@ -345,10 +345,11 @@ public class Board extends JPanel implements KeyEventDispenseChain {
         c.start();
         c.loop(Clip.LOOP_CONTINUOUSLY);
         isMusicPlaying = true;
-
     }
     public static void stopMusic() throws Exception {
-
+        if(musicStrategy != null) {
+            musicStrategy.closeMusic();
+        }
         if (c != null) // do not nest it to the previous condition ...
         {
             isMusicPlaying = false;
@@ -360,15 +361,21 @@ public class Board extends JPanel implements KeyEventDispenseChain {
 
     private void gameInit() {
 
-        try {
-            playMusic();
-        } catch (UnsupportedAudioFileException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (LineUnavailableException e) {
-            throw new RuntimeException(e);
+        if(musicStrategy == null) {
+            musicStrategy = new Music1();
         }
+        if(!isMusicPlaying) {
+            musicStrategy.runMusic();
+        }
+//        try {
+//            playMusic();
+//        } catch (UnsupportedAudioFileException e) {
+//            throw new RuntimeException(e);
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        } catch (LineUnavailableException e) {
+//            throw new RuntimeException(e);
+//        }
 
         aliens = new ArrayList<>();
 

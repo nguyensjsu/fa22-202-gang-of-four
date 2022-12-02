@@ -1,5 +1,7 @@
 package com.zetcode.BackgroundMusic;
 
+import com.zetcode.Board;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -13,6 +15,7 @@ public class SoundHandler {
 
     public static Clip runMusic(String path) {
         try {
+            Board.isMusicPlaying = true;
             AudioInputStream inputStream = AudioSystem.getAudioInputStream(new File(path));
             Clip clip = AudioSystem.getClip();
             clip.open(inputStream);
@@ -28,6 +31,7 @@ public class SoundHandler {
         return null;
     }
     public static void closeMusic(Clip c) {
+        Board.isMusicPlaying = false;
         if(c != null){
             c.close();
             c.flush();
