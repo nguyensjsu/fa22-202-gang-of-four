@@ -35,25 +35,14 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
-import javax.swing.ImageIcon;
-import javax.swing.JPanel;
-import javax.swing.Timer;
-
-import com.zetcode.BackgroundMusic.IMusicStrategy;
-import com.zetcode.BackgroundMusic.Music3;
-import com.zetcode.LiveScore.LiveScoreObserver;
-import com.zetcode.LiveScore.LiveScoreSubject;
 import com.zetcode.MultipleLives.RemainingLivesObserver;
 import com.zetcode.MultipleLives.RemainingLivesSubject;
 import com.zetcode.cheatcode.InputHandler;
 import com.zetcode.cheatcode.KeyEventDispenseChain;
-import com.zetcode.sprite.Alien;
-import com.zetcode.sprite.Bomb;
+
 import com.zetcode.sprite.DoubleShot;
 import com.zetcode.sprite.IShot ;
 import com.zetcode.sprite.LevelUp;
-import com.zetcode.sprite.Player;
-import com.zetcode.sprite.Shot;
 
 
 public class Board extends JPanel implements KeyEventDispenseChain {
@@ -163,17 +152,7 @@ public class Board extends JPanel implements KeyEventDispenseChain {
     // JButtonFeature
     private void pauseGame() {
         Container parent = pauseButton.getParent();
-//        try {
-//            Board.stopMusic();
-//        } catch (Exception e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//        }
-//        parent.add(resumeButton, 0, 0);
-//        parent.remove(pauseButton);
-//        parent.revalidate();
-//        parent.repaint();
-//        timer.stop();
+
         try {
             // Pause feature
             ButtonControl control = new ButtonControl();
@@ -199,10 +178,6 @@ public class Board extends JPanel implements KeyEventDispenseChain {
     private void resumeGame() {
         Container parent = resumeButton.getParent();
         try {
-            //dataset.doSort();
-//            if(!isMusicPlaying){
-//                playMusic();
-//            }
             if(isMusicPlaying){
                 try {
                     Board.stopMusic();
@@ -310,7 +285,6 @@ public class Board extends JPanel implements KeyEventDispenseChain {
                         musicStrategy = new Music1();
                     }
                     musicStrategy.runMusic();
-//                    isMusicPlaying = true;
                 } catch (Exception io_E) {
                     // TODO Auto-generated catch block
                     io_E.printStackTrace();
@@ -321,7 +295,6 @@ public class Board extends JPanel implements KeyEventDispenseChain {
                     musicStrategy.closeMusic();
                     musicStrategy = new Music3();
                     musicStrategy.runMusic();
-//                    isMusicPlaying = true;
                 } catch (Exception io_E) {
                     // TODO Auto-generated catch block
                     io_E.printStackTrace();
@@ -367,15 +340,6 @@ public class Board extends JPanel implements KeyEventDispenseChain {
         if(!isMusicPlaying) {
             musicStrategy.runMusic();
         }
-//        try {
-//            playMusic();
-//        } catch (UnsupportedAudioFileException e) {
-//            throw new RuntimeException(e);
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        } catch (LineUnavailableException e) {
-//            throw new RuntimeException(e);
-//        }
 
         aliens = new ArrayList<>();
 
@@ -396,17 +360,6 @@ public class Board extends JPanel implements KeyEventDispenseChain {
         // LiveScoreFeature
         scoreSubject = new LiveScoreSubject();
         scoreObserver = new LiveScoreObserver(scoreSubject);
-
-//        Start the music
-//        musicStrategy = new Music3();
-//        musicStrategy.runMusic();
-//
-//        // Restart feature
-//        ButtonControl control = new ButtonControl();
-//        RestartButton rb = new RestartButton();
-//        ICommand restart = new RestartButtonPressed(rb);
-//        //switch on
-//        control.setCommand(restart);
 
         // Remaining Lives Feature
         livesSubject = new RemainingLivesSubject(remainingLives);
@@ -540,6 +493,7 @@ public class Board extends JPanel implements KeyEventDispenseChain {
         scoreSubject.drawScore(currentScore, g);
     }
 
+    // LiveScoreFeature
     private void scoreUp(int currentScore) {
         this.currentScore = scoreSubject.scoreUp(currentScore);
         //g.drawString("Score: "+ currentScore , Commons.BOARD_WIDTH - 90, 20);
@@ -605,9 +559,6 @@ public class Board extends JPanel implements KeyEventDispenseChain {
                                 scoreUp(currentScore);
                             }
                         }
-                        // LiveScoreFeature
-                        //currentScore += 1;
-                        //currentScore = scoreSubject.scoreUp(currentScore);
                         scoreUp(currentScore);
                     }
                 }
