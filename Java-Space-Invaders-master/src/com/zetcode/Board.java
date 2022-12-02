@@ -121,8 +121,6 @@ public class Board extends JPanel implements KeyEventDispenseChain {
         JPanel buttonPane = new JPanel();
         buttonPane.setLayout(new GridLayout(0, 5));
         buttonPane.setPreferredSize(new Dimension(Commons.BOARD_WIDTH, Commons.JBUTTON_HEIGHT));
-//        JPanel panel = new JPanel();
-//        panel.setVisible(false);
         buttonPane.add(pauseButton);
         buttonPane.add(restartButton);
         buttonPane.add(pauseMusic);
@@ -371,26 +369,6 @@ public class Board extends JPanel implements KeyEventDispenseChain {
         } catch (LineUnavailableException e) {
             throw new RuntimeException(e);
         }
-//        if(isMusicPlaying){
-//            try {
-//                Board.stopMusic();
-//                if(musicStrategy!= null){
-//                    musicStrategy.closeMusic();
-//                    isMusicPlaying = false;
-//                }
-//            } catch (Exception io_E) {
-//                // TODO Auto-generated catch block
-//                io_E.printStackTrace();
-//            }
-//        }
-//        else{
-//            try {
-//                Board.playMusic();
-//            } catch (Exception io_E) {
-//                // TODO Auto-generated catch block
-//                io_E.printStackTrace();
-//            }
-//        }
 
         aliens = new ArrayList<>();
 
