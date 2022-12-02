@@ -12,8 +12,7 @@ import static com.zetcode.Board.stopMusic;
 //Receiver
 public class RestartButton {
     public void pressButton(){
-        var ex = new SpaceInvaders();
-        ex.setVisible(true);
+    	SpaceInvaders.getInstance().restartGame();
         try {
             stopMusic();
             playMusic();
