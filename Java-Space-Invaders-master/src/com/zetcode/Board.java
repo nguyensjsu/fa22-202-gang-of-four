@@ -789,7 +789,36 @@ public class Board extends JPanel implements KeyEventDispenseChain {
             doGameCycle();
         }
     }
+    private class TAdapter extends KeyAdapter {
 
+        @Override
+        public void keyReleased(KeyEvent e) {
+
+            player.keyReleased(e);
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+
+            player.keyPressed(e);
+
+            int x = player.getX();
+            int y = player.getY();
+
+            int key = e.getKeyCode();
+
+            if (key == KeyEvent.VK_SPACE) {
+
+                if (inGame) {
+
+                    if (!shot.isVisible()) {
+
+                        shot = new Shot(x, y);
+                    }
+                }
+            }
+        }
+    }
 
     public void levelUpByCheatCode()
     {

@@ -24,7 +24,7 @@ public class SpaceInvaders extends JFrame  {
 		return instance;
 	}
 
-    private SpaceInvaders() {
+    public SpaceInvaders() {
         initUI();
     }
 
