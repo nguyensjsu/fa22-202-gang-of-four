@@ -463,7 +463,7 @@ public class Board extends JPanel implements KeyEventDispenseChain {
 
     private void drawLevelUp( Graphics g ) {
         if ( lvlUp.isVisible() ) {
-            g.drawImage(lvlUp.getImage(), lvlUp.getX(), lvlUp.getY(), this ) ;
+            g.drawImage(lvlUp.getImage(), lvlUp.getX(), lvlUp.getY()+20, this ) ;
         }
 
         if ( lvlUp.isDying() ) {
@@ -535,7 +535,7 @@ public class Board extends JPanel implements KeyEventDispenseChain {
                 g.drawString("Score: " + scoreObserver.getScore(), Commons.BOARD_WIDTH - 90, Commons.OBSERVER_INIT_Y);
             }
 
-            g.drawString("Timer: " + timerObserver.getTime(), Commons.BOARD_WIDTH - 200, Commons.OBSERVER_INIT_Y);
+            g.drawString("Timer: " + timerObserver.getTime(), Commons.BOARD_WIDTH - 265, Commons.OBSERVER_INIT_Y);
 
 
             g.drawLine(0, Commons.GROUND,
