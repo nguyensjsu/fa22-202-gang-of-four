@@ -73,6 +73,22 @@ The features implemented for this new Space Invaders version are:
 
 ### **Cheat codes**
 
+* Chain of responsibility interface
+```
+public interface KeyEventDispenseChain {
+	void setNextChain(KeyEventDispenseChain nextChain);	
+	void keyEvent(int key);
+}
+```
+
+* Plugging the chain inside Board class
+```
+  inputHandler = new InputHandler(this);
+  player.setNextChain(livesSubject);
+  livesSubject.setNextChain(this);
+```
+
+
 ### **Score display**
 
 ### **Timer display**
