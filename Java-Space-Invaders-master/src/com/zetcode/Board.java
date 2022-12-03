@@ -887,7 +887,7 @@ public class Board extends JPanel implements KeyEventDispenseChain {
 	@Override
 	public void keyEvent(int key) {
 		// TODO Auto-generated method stub
-		System.err.println(key);
+		//System.err.println(key);
 		if (key == 16 || key == 66) {
 			levelUpByCheatCode();
         } else if (this.chain!=null) {
