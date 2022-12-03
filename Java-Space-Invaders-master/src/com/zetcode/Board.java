@@ -423,7 +423,7 @@ public class Board extends JPanel implements KeyEventDispenseChain {
         player = new Player();
         shot = new Shot();
         shotType = 0 ;
-        lvlUp = new LevelUp(229, Commons.BOARD_HEIGHT-350) ;
+        lvlUp = new LevelUp(Commons.BOARD_WIDTH/2 - 6, Commons.OBSERVER_INIT_Y + 25) ;
 
         // observer
         scoreSubject.attach(scoreObserver);
