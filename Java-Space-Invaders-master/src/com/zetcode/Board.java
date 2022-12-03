@@ -535,7 +535,7 @@ public class Board extends JPanel implements KeyEventDispenseChain {
                 g.drawString("Score: " + scoreObserver.getScore(), Commons.BOARD_WIDTH - 90, Commons.OBSERVER_INIT_Y);
             }
 
-            g.drawString("Timer: " + timerObserver.getTime(), Commons.BOARD_WIDTH - 265, Commons.OBSERVER_INIT_Y);
+            g.drawString("Timer: " + timerObserver.getTime(), (Commons.BOARD_WIDTH/2 - 50), Commons.OBSERVER_INIT_Y);
 
 
             g.drawLine(0, Commons.GROUND,
