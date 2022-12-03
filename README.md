@@ -1,5 +1,13 @@
 # Team Project (Gang of Four - Space Invaders)
 
+## Our Team
+
+Name                    | Student ID  | XP Core Value
+-------------           | ------------| -------------
+Harshit                 |    | Feedback
+Sankalp                 |    | Communication
+Rafic Hasbini           | 011243466   | Simplicity
+Zaber Ahmed             |    | Respect
 
 ## Game Introduction and Project Plan:
 The Gang of Four team has implemented a new iteration of the famous Space Invadors game for this project. The game includes the traditional components: Aliens, Spaceship, Alien-Bombs and additional features implemented by our team for this new version. The team will enhance the traditional game with new features to create a more exhilirating player experience. The game objective is for the player to destroy all the aliens before they either destroy the player or invade the player in the fastest time.
