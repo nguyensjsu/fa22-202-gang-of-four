@@ -1,6 +1,5 @@
 package com.zetcode.LiveScore;
 
-import java.awt.Graphics;
 
 public interface ILiveScoreSubject {
     public void attach(ILiveScoreObserver o);
