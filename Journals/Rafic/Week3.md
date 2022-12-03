@@ -13,5 +13,5 @@ For this week, I plan to complete the home screen and gameover screen implementa
 <br>
 For this week, I faced one blocker relating to running code due to path errors. I have addressed these errors to the team so that they may be fixed as well. Once these blockers are fixed, I will be able to run the code and complete my integration testing tasks.
 
-<b>Core XP value - ()</b>
+<b>Core XP value - Simplicity</b>
 <br>
