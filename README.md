@@ -26,7 +26,7 @@ The Gang of Four team functioned as an agile team and completed the project in a
 
 * Gameplay Demo
 
-- [![Gameplay Demo]()](https://www.youtube.com/watch?v=o2iQpkRLrAo)
+- [![Gameplay Demo](https://i9.ytimg.com/vi/o2iQpkRLrAo/mq1.jpg?sqp=CODCrpwG&rs=AOn4CLAXGtzj_v3mjFiMd39fDBmFHvSySA)](https://www.youtube.com/watch?v=o2iQpkRLrAo)
 
 
 ### **Individual Journals**
