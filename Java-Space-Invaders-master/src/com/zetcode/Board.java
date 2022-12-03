@@ -100,8 +100,8 @@ public class Board extends JPanel implements KeyEventDispenseChain {
     JButton pauseButton = new JButton("Pause");
     JButton resumeButton = new JButton("Resume");
     JButton restartButton = new JButton("Restart");
-    JButton pauseMusic = new JButton("P Music");
-    JButton toggleMusic = new JButton("N Music");
+    JButton pauseMusic = new JButton("Toggle Sound");
+    JButton toggleMusic = new JButton("Next Music");
     JButton hardMode = new JButton("Hard Mode");
     JButton easyMode = new JButton("Easy Mode");
 
