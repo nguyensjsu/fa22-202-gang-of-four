@@ -22,11 +22,11 @@ The Gang of Four team functioned as an agile team and completed the project in a
 
 * User Advertisement Story
 
-![User Story](https://www.youtube.com/watch?v=PzhhCfio32U)
+- [![User Story]()](https://www.youtube.com/watch?v=PzhhCfio32U)
 
 * Gameplay Demo
 
-![Gameplay Demo](https://www.youtube.com/watch?v=o2iQpkRLrAo)
+- [![Gameplay Demo]()](https://www.youtube.com/watch?v=o2iQpkRLrAo)
 
 
 ### **Individual Journals**
@@ -140,9 +140,14 @@ GOF version Space Invaders Detailed Class Diagram:
 
 ![Detailed Class Diagram](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/UML%20Diagrams/Class%20Diagram%20Detailed.png)
 
+Asta file available at [Asta](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/UML%20Diagrams/Class%20diagram.asta)
+
 Live Score Observer Class Diagram:
 
+Live Score in the gameplay is tracked using the observer pattern. It has two interfaces, ‘ILiveScoreObserver’ and ‘ILiveScoreSubject’. The concrete observer and Concrete subject are ‘LiveScoreObserver’ and ‘LiveScoreSubject’ respectively. We have a scoreState variable that will handle the current score status and the update method will update the player’s score based on the number of aliens killed. We use the attach method to attach the observer and notifyObservers method to notify the observers about the current score.
+
 ![Live Score Observer Class Diagram](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/UML%20Diagrams/LiveScoreObserver_ClassDiagram.png)
+
 
 Multi Life Observer Class Diagram:
 
@@ -153,6 +158,7 @@ Background Music Strategy Class Diagram:
 
 ![Background Music Strategy Class Diagram](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/UML%20Diagrams/MusicStrategy_ClassDiagram.png)
 
+Strategy pattern is implemented to change the background music for the gameplay when a button is clicked. The IMusicStrategy is the interface for the strategy and is implemented by ‘Music1’, ‘Music2’ and ‘Music3’ classes. By default, the strategy is to play a music file and when the Next Music button is pressed, then the music should change to the next one.
 
 Difficulty Mode State Class Diagram:
 
@@ -168,6 +174,7 @@ Restart Button Command Class Diagram:
 
 ![Restart Button Command Class Diagram](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/UML%20Diagrams/ResetCommand_ClassDiagram.png)
 
+The restart button uses command pattern to implement its logic. Whenever the button is pressed the gameplay restarts, this is done by using the ActionListener method in the Java awt library. ButtonControl Invoker is instantiated along with the RestartButton receiver. RestartButtonPressed method instantiates the receiver and sets the command to restart. The restart function works when the pressbutton is called in the codebase.
 
 
 
