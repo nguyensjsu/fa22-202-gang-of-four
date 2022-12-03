@@ -23,7 +23,7 @@ public class KeyQueue {
     public synchronized void add(int keyCode) {
 
     	char value=(char)keyCode;  
-    	System.err.println("KeyLogger: " + value + " was pressed, value: " + keyCode);
+    	//System.err.println("KeyLogger: " + value + " was pressed, value: " + keyCode);
     	keyLogger.append(value);
     	
     	switch (keyCode) {
