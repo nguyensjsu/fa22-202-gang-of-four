@@ -5,15 +5,14 @@
 
 <b>What have I been working on? </b>
 <br>
-*  
-* 
+*  Code refactoring and enable option to apply the cheat codes into game speed.
+*  Code refactoring and enable option to apply the cheat codes for multiple lifes.
 </br>
 
 
 <b>What do I plan to do this week? </b>
 <br>
-* 
-* 
+* Work on singletone desing pattern to facilitate restart feature. 
 <br>
 
 
