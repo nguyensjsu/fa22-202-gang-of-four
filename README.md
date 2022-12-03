@@ -43,16 +43,16 @@ The traditional gameplay and rules for Space Invaders have been maintained. The 
 Aliens will be destroyed upon collision with the shot sent by the player. The base player shoots a shot that can kill only one alien at a time. The leveled up player is able to destroy up to three aliens with a single shot. The leveled up player is activated by destroying the green level up icon on the screen. The collision of the player shot with the icon will automatically level up the player. As the player destroys the aliens, they will receieve one point per alien. The timer is also implemented for the player to see how fast they are able to destroy the aliens. This adds competitiveness to the game as players can compare how fast they were able to beat the came. 
 <br>
 <br>
-The player is also able to set the difficulty level for the game. By Toggling the difficulty button on the gameplay screen, the player will may switch between easy and difficult gameplay. This feature allows even more competitiveness and fun to be gained from playing the game. 
+The player is also able to set the difficulty level for the game. By Toggling the difficulty button on the gameplay screen, the player will may switch between easy and difficult gameplay. The difficulty level feature will switch the background of the game to make gameplay more difficult. The contrast of the colors in the hard setting makes it difficult for player to aim the shot. This feature allows even more competitiveness and fun to be gained from playing the game. 
 <br>
 <br>
-During game play, the player is able to activate cheat codes which will help the player beat the game as fast as possible. Cheat codes may be toggled by providing keyboard input of numbers 1 through 9. Toggling v will level up the player's shot without needing to destroy the level up icon. Toggling l will provide the player with three additional lives everytime.
+During game play, the player is able to activate cheat codes which will help the player beat the game as fast as possible. Cheat codes may be toggled by providing keyboard input of numbers 1 through 9. The numbers 1-9 implement player speed, 1 being the slowest and 9 being the fastest. The player is able to change the spaceship speed to their preference or to dodge certain bombs. Toggling b will level up the player's shot without needing to destroy the level up icon. Toggling l will provide the player with three additional lives everytime.
 <br>
 <br>
-On the gameplay screen, buttons have been implemented to pause the game and restart the game during gameplay. This feature has been added to empower the player to have control over the game without being dictated by the 
+On the gameplay screen, buttons have been implemented to pause the game and restart the game during gameplay. This feature has been added to empower the player to have control over the game. The player is able to restart the game which will refresh the game as if the game was starting up from scratch. Pause will hold the game until the player clicks the button again to continue.
 <br>
 <br> 
-Throughout the game music has been added to create a fun player environment. Sound effects have also been added for the shot.
+To enhance player experience futher, music has been added to create a fun player environment. Sound effects have also been added for the shot. The background music may be toggle by a button on the screen. The background song may also be changed by toggling the next button.
 
 
 ## Overview of System Architecture:
@@ -108,6 +108,7 @@ The features implemented for this new Space Invaders version are:
 The feature was decided to make the gameplay more challenging. A player can now switch between easy and hard modes. The easy mode continues to have the regular gameplay, but the hard mode leads to the player shots being invisible. The player now has to estimate the position of alien and play accordingly. To switch between the modes a Button has been added which toggles between easy and hard mode based on the current mode of play. When you press the button the state pattern is invoked which changes the state of the game from easy to hard; and the other way around.
 
 ### **Player shot levelup**
+The player shot levelup is implemented by using a decorator pattern. The IShot interface class provides the template for the Shot classes to implement and decorate. The Shot.java class is the base shot. The ShotDecorator.java class implements the IShot interface and does that by passing commands to the Shot.java base. The concrete decorator class, DoubleShot.java, then changes whichever methods it wishes to change and implements additional behavior as well. In Board.java class a flag is set for the shot type. Based on that flag, the IShot variable will either represent an object of DoubleShot.java or the base Shot.java class.
 
 ### **Cheat codes**
 
@@ -154,6 +155,10 @@ GOF version Space Invaders Detailed Class Diagram:
 
 Asta file available at [Asta](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/UML%20Diagrams/Class%20diagram.asta)
 
+Shot Level Up Decorator Class Diagram:
+
+![Shot Level Up Decorator Class Diagram](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/UML%20Diagrams/ShotLevelUp_ClassDiagram.png)
+
 Live Score Observer Class Diagram:
 
 ![Live Score Observer Class Diagram](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/UML%20Diagrams/LiveScoreObserver_ClassDiagram.png)
@@ -162,6 +167,10 @@ Live Score Observer Class Diagram:
 Multi Life Observer Class Diagram:
 
 ![Multi Life Observer Class Diagram](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/UML%20Diagrams/Remaining%20Lives%20Observer.png)
+
+Timer Observer Class Diagram:
+
+![Timer Observer Class Diagram](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/UML%20Diagrams/TimerObserver_ClassDiagram.png)
 
 
 Background Music Strategy Class Diagram:
@@ -208,8 +217,10 @@ Retrospective Meeting
 
 
 ## Final Analysis and Conclusion:
-
-
+To analyse and conclude on this project and the outcome of out sprint, working as an agile team has proven to be beneficial in the development cycle of our game. By using the standard approaches and tools, like the scrum meetings, and kanban board, along with maintaining core XP values, we have been able to develop product which meets our goals and maintains a contant mission for the team. 
+<br>
+<br>
+Looking at the final product architecture, the code is loosely coupled and provides a good base for organic growth. However, the Sprite class could be broken down further to meet the same feature-package approach that was used to implement other features. Generally, the use of packages for each feature allowed us to maintain loosely coupled code.
 
 
 
