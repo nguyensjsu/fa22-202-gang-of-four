@@ -11,7 +11,7 @@ This week also included administrative tasks to create the Task board and set up
 
 <b>What I plan to do today/this week?</b>
 <br>
-For next week, I plan to complete implementing the player shot using the decorator pattern, and document the approach in the project readme file by including notes and diagrams.
+I plan to complete implementing the player shot using the decorator pattern, and document the approach in the project readme file by including notes and diagrams.
 I also plan on coming up with more features which may be implemented and support the team in the features that they would like to implement. This will include taking part in code reviews.
 We have started talks as a team to refactor the base code more and expand on the functionality of the game to include a start page, pause buttons and grow the functionality of the game over page.
 
@@ -20,8 +20,6 @@ We have started talks as a team to refactor the base code more and expand on the
 For this week, I do not have any blockers. 
 However I have introduced a blocker for other members with a broken commit that I have made to main. So I will be prioritizing that fix before expaning/completing any other features.
 
-<b>Core XP value - (Communication)</b>
+<b>Core XP value - Simplicty</b>
 <br>
-The team has kept communication values in multiple ways. We began a whats app group chat so that we may communicate frequently on tasks for the project and support each other.
-The team has also met twice this week to go over the code base, as well as discuss the features to implement and delegate that work.
-We have also began to use the task board as a way to keep the team informed on progress of each task.
+The team maintains the XP core value of simplicity by agreeing one what needs to be completed to create value for the project. For this week, by agreeing on what we want to implement, we will keep it simple and only complete what is agreed on, without wasting time on features that dont add value to the project.
