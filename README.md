@@ -23,13 +23,32 @@ The Gang of Four team functioned as an agile team and completed the project in a
 
 
 ## Gameplay Summary:
+The traditional gameplay and rules for Space Invaders have been maintained. The player will attempt to destroy all the aliens, while avoiding their bombs, before they are able to invade. Once the game is started up, the player is able to move the ship left and right only usign the left and right arrow buttons. The player is able to fire a shot from the ship's gun using the space bar. When the game begins, the Aliens will begin at the top of the screen, and gradually move down towards the player while they move from the left edge to the right edge of the screen. While the Aliens move, they will drop a rain of bombs and the player must avoid them or risk losing lives and eventually dying. 
+<br>
+<br>
+Aliens will be destroyed upon collision with the shot sent by the player. The base player shoots a shot that can kill only one alien at a time. The leveled up player is able to destroy up to three aliens with a single shot. The leveled up player is activated by destroying the green level up icon on the screen. The collision of the player shot with the icon will automatically level up the player. As the player destroys the aliens, they will receieve one point per alien. The timer is also implemented for the player to see how fast they are able to destroy the aliens. This adds competitiveness to the game as players can compare how fast they were able to beat the came. 
+<br>
+<br>
+The player is also able to set the difficulty level for the game. 
+<br>
+<br>
+During game play, the player is able to activate cheat codes which will help the player beat the game faste
+~ list the gameplay cheat codes.
+<br>
+<br>
+On the gameplay screen, buttons have been implemented to:
+<br>
+<br> 
+Throughout the game music has been added to create a fun player environment. Sound effects have also been added for the shot.
 
 
 ## Overview of System Architecture:
 <image of Architecture diagram>
 
 
-## Features List and Design Notes:
+## Features Design Notes:
+
+### **Feature list**
 The features implemented for this new Space Invaders version are:
 * Difficulty mode setting - State design pattern
 * Player shot levelup - decorator pattern
@@ -39,7 +58,6 @@ The features implemented for this new Space Invaders version are:
 * Lives display - observer pattern
 * Buttons - Command pattern
 * Music/sounds - Strategy pattern
-
 
 ### **Difficulty mode setting**
 
