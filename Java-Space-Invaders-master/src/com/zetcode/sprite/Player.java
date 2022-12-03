@@ -29,10 +29,10 @@ public class Player extends Sprite implements KeyEventDispenseChain {
         width = ii.getImage().getWidth(null);
         setImage(ii.getImage());
 
-        int START_X = 270;
+        int START_X = Commons.BOARD_WIDTH/2;
         setX(START_X);
 
-        int START_Y = 280;
+        int START_Y = Commons.BOARD_HEIGHT-62;
         setY(START_Y);
     }
 
