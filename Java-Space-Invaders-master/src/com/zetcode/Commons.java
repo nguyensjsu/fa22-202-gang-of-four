@@ -24,7 +24,7 @@ public interface Commons {
     int DELAY = 17;
     int PLAYER_WIDTH = 15;
     int PLAYER_HEIGHT = 10;
-    int SCORE_INIT_Y = 55;
+    int OBSERVER_INIT_Y = 55;
     int PERIOD = 10;
     int JBUTTON_HEIGHT = 30;
 }
