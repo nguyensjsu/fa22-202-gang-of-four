@@ -2,18 +2,18 @@ package com.zetcode;
 
 public interface Commons {
 
-    int BOARD_WIDTH = 458;
+    int BOARD_WIDTH = 580;
     int BOARD_HEIGHT = 400;
     int BORDER_RIGHT = 30;
     int BORDER_LEFT = 5;
 
-    int GROUND = 290;
+    int GROUND = BOARD_HEIGHT-50;
     int BOMB_HEIGHT = 5;
 
     int ALIEN_HEIGHT = 12;
     int ALIEN_WIDTH = 12;
     int ALIEN_INIT_X = 150;
-    int ALIEN_INIT_Y = 45;
+    int ALIEN_INIT_Y = 65;
 
     int LEVELUP_HEIGHT = 12 ;
     int LEVELUP_WIDTH = 12 ;
