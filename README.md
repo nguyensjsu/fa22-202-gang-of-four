@@ -22,11 +22,11 @@ The Gang of Four team functioned as an agile team and completed the project in a
 
 * User Advertisement Story
 
-- [![User Story](https://i9.ytimg.com/vi/PzhhCfio32U/mq2.jpg?sqp=CMSRrpwG&rs=AOn4CLDxOtA45uTMfWomDACW0aF1DYN40g)](https://www.youtube.com/watch?v=PzhhCfio32U)
+[![User Story](https://i9.ytimg.com/vi/PzhhCfio32U/mq2.jpg?sqp=CMSRrpwG&rs=AOn4CLDxOtA45uTMfWomDACW0aF1DYN40g)](https://www.youtube.com/watch?v=PzhhCfio32U)
 
 * Gameplay Demo
 
-- [![Gameplay Demo](https://i9.ytimg.com/vi/o2iQpkRLrAo/mq1.jpg?sqp=CODCrpwG&rs=AOn4CLAXGtzj_v3mjFiMd39fDBmFHvSySA)](https://www.youtube.com/watch?v=o2iQpkRLrAo)
+[![Gameplay Demo](https://i9.ytimg.com/vi/o2iQpkRLrAo/mq1.jpg?sqp=CODCrpwG&rs=AOn4CLAXGtzj_v3mjFiMd39fDBmFHvSySA)](https://www.youtube.com/watch?v=o2iQpkRLrAo)
 
 
 ### **Individual Journals**
