@@ -567,9 +567,9 @@ public class Board extends JPanel implements KeyEventDispenseChain {
         g.fillRect(0, 0, Commons.BOARD_WIDTH, Commons.BOARD_HEIGHT);
 
         g.setColor(new Color(0, 32, 48));
-        g.fillRect(50, Commons.BOARD_WIDTH / 2 - 30, Commons.BOARD_WIDTH - 100, 50);
+        g.fillRect(50, Commons.BOARD_HEIGHT / 2 - 30, Commons.BOARD_WIDTH - 100, 50);
         g.setColor(Color.white);
-        g.drawRect(50, Commons.BOARD_WIDTH / 2 - 30, Commons.BOARD_WIDTH - 100, 50);
+        g.drawRect(50, Commons.BOARD_HEIGHT / 2 - 30, Commons.BOARD_WIDTH - 100, 50);
 
         var small = new Font("Helvetica", Font.BOLD, 14);
         var fontMetrics = this.getFontMetrics(small);
@@ -577,7 +577,7 @@ public class Board extends JPanel implements KeyEventDispenseChain {
         g.setColor(Color.white);
         g.setFont(small);
         g.drawString(message, (Commons.BOARD_WIDTH - fontMetrics.stringWidth(message)) / 2,
-                Commons.BOARD_WIDTH / 2);
+                Commons.BOARD_HEIGHT / 2);
     }
 
     // LiveScoreFeature
