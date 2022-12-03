@@ -24,9 +24,9 @@ If time permits, I will work with the team to help others add one functionality 
 I currently don't have any blockers.
 
 
-<b>Core XP Value- Simplicity </b>
+<b>Core XP Value- Feedback </b>
 <br>
-We have tried to keep the entire process simple, the functionalities we will be implementing in a way that they won't create blockers for other developers.
-The code deployment will try to have similar feature.
+My core XP value for the week is feedback, I try to take and give feedback with the team.
+I try to take feedbacks on my part of the project from the team. And give honest feedback on the code and doubts to the others.
 
 
