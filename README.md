@@ -57,6 +57,11 @@ Throughout the game music has been added to create a fun player environment. Sou
 
 ## Overview of System Architecture:
 
+The system architecture has been designed in a way to maintain loose coupling of components and enable developers to understand the code easily. Features have been added to the code base in the form of packages. By reviewing the architectual diagram below, it becomes easy to expand on features, fix bugs, and add new features by following the feature-package approach. The Board.java class is essentially what ties together all packages by implementing how the objects will interact to create the game play.
+<br>
+<br>
+The Sprite package consists of all the components which make up the game play: Aliens, player, shot, bombs. Since all of these components have the same base movements and jobs. Aliens, Player, and bombs extend the Sprite.java class, However, to implement the decortor pattern for the shot level up feature, it was necessary to create the IShot interface in the Sprite package and implement the decorator separate from the Sprite class. By implementing the IShot interface, it was possible to include it in the Board.java and switch between the different types of shots.
+
 Architectural Diagram
 
 ![Architectural Diagram](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/Architectural%20Diagrams/Architecture%20Diagram.png)
