@@ -27,5 +27,7 @@ Don't have any blockers now.
 * Respect is a deep value, one that lies below the surface of the other four values. In Extreme Programming,
 * Everyone respects each other as a valued team member.
 * Everyone contributes value such as enthusiasm.
+* Team members have been respectful of others time.
+* During the standup meetings, when someone would have questions for a proposed feature or idea, handled it in a respectful way.
 </br>
 
