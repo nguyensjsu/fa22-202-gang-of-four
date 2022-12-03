@@ -5,26 +5,21 @@ import java.awt.Graphics ;
 
 public class TimerObserver implements ITimerObserver {
 
-    private long time ;
+    protected long time;
+    protected TimerSubject subject;
 
-    public TimerObserver( ITimerSubject timer ) {
-        timer.attach(this) ;
-    }
-    
-    public void update( long time ) {
-        this.time = time ;
+    public TimerObserver(TimerSubject subject){
+        this.subject = subject;
+        time = this.subject.getState();
     }
 
-    public void update( long time, Graphics g ) {
-        this.time = time ;
-        displayCurrent() ;
-    }
-
-    public void displayCurrent() {
+    @Override
+    public void update() {
+        this.time = subject.getState();
 
     }
 
-    public void drawTime( long currTime, Graphics g ) {
-        g.drawString("Time: " + currTime, Commons.BOARD_WIDTH - 90 , 30) ;
+    public long getTime(){
+        return time;
     }
 }
