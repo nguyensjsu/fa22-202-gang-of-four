@@ -100,8 +100,8 @@ public class Board extends JPanel implements KeyEventDispenseChain {
     JButton pauseButton = new JButton("Pause");
     JButton resumeButton = new JButton("Resume");
     JButton restartButton = new JButton("Restart");
-    JButton pauseMusic = new JButton("P Music");
-    JButton toggleMusic = new JButton("N Music");
+    JButton pauseMusic = new JButton("Toggle Sound");
+    JButton toggleMusic = new JButton("Next Music");
     JButton hardMode = new JButton("Hard Mode");
     JButton easyMode = new JButton("Easy Mode");
 
@@ -423,7 +423,7 @@ public class Board extends JPanel implements KeyEventDispenseChain {
         player = new Player();
         shot = new Shot();
         shotType = 0 ;
-        lvlUp = new LevelUp(229, Commons.BOARD_HEIGHT-350) ;
+        lvlUp = new LevelUp(Commons.BOARD_WIDTH/2 - 6, Commons.OBSERVER_INIT_Y + 25) ;
 
         // observer
         scoreSubject.attach(scoreObserver);
@@ -535,7 +535,7 @@ public class Board extends JPanel implements KeyEventDispenseChain {
                 g.drawString("Score: " + scoreObserver.getScore(), Commons.BOARD_WIDTH - 90, Commons.OBSERVER_INIT_Y);
             }
 
-            g.drawString("Timer: " + timerObserver.getTime(), Commons.BOARD_WIDTH - 265, Commons.OBSERVER_INIT_Y);
+            g.drawString("Timer: " + timerObserver.getTime(), (Commons.BOARD_WIDTH/2 - 50), Commons.OBSERVER_INIT_Y);
 
 
             g.drawLine(0, Commons.GROUND,
@@ -567,9 +567,9 @@ public class Board extends JPanel implements KeyEventDispenseChain {
         g.fillRect(0, 0, Commons.BOARD_WIDTH, Commons.BOARD_HEIGHT);
 
         g.setColor(new Color(0, 32, 48));
-        g.fillRect(50, Commons.BOARD_WIDTH / 2 - 30, Commons.BOARD_WIDTH - 100, 50);
+        g.fillRect(50, Commons.BOARD_HEIGHT / 2 - 30, Commons.BOARD_WIDTH - 100, 50);
         g.setColor(Color.white);
-        g.drawRect(50, Commons.BOARD_WIDTH / 2 - 30, Commons.BOARD_WIDTH - 100, 50);
+        g.drawRect(50, Commons.BOARD_HEIGHT / 2 - 30, Commons.BOARD_WIDTH - 100, 50);
 
         var small = new Font("Helvetica", Font.BOLD, 14);
         var fontMetrics = this.getFontMetrics(small);
@@ -577,7 +577,7 @@ public class Board extends JPanel implements KeyEventDispenseChain {
         g.setColor(Color.white);
         g.setFont(small);
         g.drawString(message, (Commons.BOARD_WIDTH - fontMetrics.stringWidth(message)) / 2,
-                Commons.BOARD_WIDTH / 2);
+                Commons.BOARD_HEIGHT / 2);
     }
 
     // LiveScoreFeature
@@ -887,7 +887,7 @@ public class Board extends JPanel implements KeyEventDispenseChain {
 	@Override
 	public void keyEvent(int key) {
 		// TODO Auto-generated method stub
-		System.err.println(key);
+		//System.err.println(key);
 		if (key == 16 || key == 66) {
 			levelUpByCheatCode();
         } else if (this.chain!=null) {
