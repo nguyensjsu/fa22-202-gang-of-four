@@ -43,14 +43,13 @@ The traditional gameplay and rules for Space Invaders have been maintained. The 
 Aliens will be destroyed upon collision with the shot sent by the player. The base player shoots a shot that can kill only one alien at a time. The leveled up player is able to destroy up to three aliens with a single shot. The leveled up player is activated by destroying the green level up icon on the screen. The collision of the player shot with the icon will automatically level up the player. As the player destroys the aliens, they will receieve one point per alien. The timer is also implemented for the player to see how fast they are able to destroy the aliens. This adds competitiveness to the game as players can compare how fast they were able to beat the came. 
 <br>
 <br>
-The player is also able to set the difficulty level for the game. 
+The player is also able to set the difficulty level for the game. By Toggling the difficulty button on the gameplay screen, the player will may switch between easy and difficult gameplay. This feature allows even more competitiveness and fun to be gained from playing the game. 
 <br>
 <br>
-During game play, the player is able to activate cheat codes which will help the player beat the game faste
-~ list the gameplay cheat codes.
+During game play, the player is able to activate cheat codes which will help the player beat the game as fast as possible. Cheat codes may be toggled by providing keyboard input of numbers 1 through 9. Toggling v will level up the player's shot without needing to destroy the level up icon. Toggling l will provide the player with three additional lives everytime.
 <br>
 <br>
-On the gameplay screen, buttons have been implemented to:
+On the gameplay screen, buttons have been implemented to pause the game and restart the game during gameplay. This feature has been added to empower the player to have control over the game without being dictated by the 
 <br>
 <br> 
 Throughout the game music has been added to create a fun player environment. Sound effects have also been added for the shot.
