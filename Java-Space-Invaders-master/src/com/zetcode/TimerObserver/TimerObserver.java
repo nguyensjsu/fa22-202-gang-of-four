@@ -1,25 +1,50 @@
 package com.zetcode.TimerObserver;
 
-import com.zetcode.Commons;
-import java.awt.Graphics ;
+import java.util.Timer;
+import java.util.TimerTask;
 
-public class TimerObserver implements ITimerObserver {
+public class TimerObserver extends TimerTask implements ITimerObserver {
 
-    protected long time;
+	Timer timer;
+	
+    protected int minute = 0;
+    protected int seconds = 0;
+    
     protected TimerSubject subject;
 
     public TimerObserver(TimerSubject subject){
         this.subject = subject;
-        time = this.subject.getState();
+        this.start();
     }
+    
+	@Override
+	public void start() {
+		// TODO Auto-generated method stub
+
+        timer = new Timer();
+        timer.schedule(this, 1);
+	}
 
     @Override
     public void update() {
-        this.time = subject.getState();
-
+    	
     }
 
-    public long getTime(){
-        return time;
+    public String getTime(){
+    	return String.format("%02d:%02d", seconds/60, seconds%60);
     }
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		while(timer!=null)
+		{
+	      try {
+	    	  seconds++;		    	  
+	            Thread.sleep(1000);
+	        } catch (InterruptedException e) {
+	            e.printStackTrace();
+	        }
+		}
+	}
 }
