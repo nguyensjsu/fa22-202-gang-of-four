@@ -4,6 +4,7 @@ import com.zetcode.BackgroundMusic.IMusicStrategy;
 import com.zetcode.BackgroundMusic.Music1;
 import com.zetcode.BackgroundMusic.Music2;
 import com.zetcode.BackgroundMusic.Music3;
+import com.zetcode.DifficultyMode.ModeHandler;
 import com.zetcode.LiveScore.LiveScoreObserver;
 import com.zetcode.LiveScore.LiveScoreSubject;
 import com.zetcode.Command.*;
@@ -77,6 +78,10 @@ public class Board extends JPanel implements KeyEventDispenseChain {
 
     // BackgroundMusicFeature
     public static IMusicStrategy musicStrategy;
+    
+    // Difficulty modes
+    public ModeHandler mod;
+    public int cr = 0;
 
 
     // JButtonFeature
@@ -90,6 +95,8 @@ public class Board extends JPanel implements KeyEventDispenseChain {
     JButton restartButton = new JButton("Restart");
     JButton pauseMusic = new JButton("P Music");
     JButton toggleMusic = new JButton("N Music");
+    JButton hardMode = new JButton("Hard Mode");
+    JButton easyMode = new JButton("Easy Mode");
 
 	private KeyEventDispenseChain chain;
 
@@ -106,6 +113,8 @@ public class Board extends JPanel implements KeyEventDispenseChain {
         RestartHandler restartHandler = new RestartHandler();
         PauseMusicHandler pauseMusicHandler = new PauseMusicHandler();
         ToggleMusicHandler toggleMusicHandler = new ToggleMusicHandler();
+        EasyButtonHandler easyHandler = new EasyButtonHandler();
+        HardButtonHandler hardHandler = new HardButtonHandler();
 
         JPanel buttonPane = new JPanel();
         buttonPane.setLayout(new GridLayout(0, 5));
@@ -114,6 +123,7 @@ public class Board extends JPanel implements KeyEventDispenseChain {
         buttonPane.add(restartButton);
         buttonPane.add(pauseMusic);
         buttonPane.add(toggleMusic);
+        buttonPane.add(hardMode);
 
         add(buttonPane);
 
@@ -122,6 +132,8 @@ public class Board extends JPanel implements KeyEventDispenseChain {
         restartButton.addActionListener(restartHandler);
         pauseMusic.addActionListener(pauseMusicHandler);
         toggleMusic.addActionListener(toggleMusicHandler);
+        hardMode.addActionListener(hardHandler);
+        easyMode.addActionListener(easyHandler);
 
 
         pauseButton.setFocusable(false);
@@ -129,10 +141,14 @@ public class Board extends JPanel implements KeyEventDispenseChain {
         resumeButton.setFocusable(false);
         pauseMusic.setFocusable(false);
         toggleMusic.setFocusable(false);
+        hardMode.setFocusable(false);
+        easyMode.setFocusable(false);
         addKeyListener(new TAdapter());
         setFocusable(true);
         d = new Dimension(Commons.BOARD_WIDTH, Commons.BOARD_HEIGHT);
         setBackground(Color.black);
+        
+        mod = new ModeHandler();
 
         timer = new Timer(Commons.DELAY, new GameCycle());
         timer.start();
@@ -331,6 +347,51 @@ public class Board extends JPanel implements KeyEventDispenseChain {
             c.close();
         }
     }
+    
+ // Difficulty Mode Feature
+    private class EasyButtonHandler implements ActionListener
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            changeToEasy();
+        }
+    }
+
+    public void changeToEasy()  {
+        Container parent = easyMode.getParent();
+
+        cr = mod.change();
+
+        parent.add(hardMode, 0, 4);
+        parent.remove(easyMode);
+        parent.revalidate();
+        parent.repaint();
+
+
+    }
+
+    private class HardButtonHandler implements ActionListener
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            changeToHard();
+        }
+    }
+
+    public void changeToHard()  {
+        Container parent = hardMode.getParent();
+
+        cr = mod.change();
+
+        parent.add(easyMode, 0, 4);
+        parent.remove(hardMode);
+        parent.revalidate();
+        parent.repaint();
+
+
+    }
 
     private void gameInit() {
 
@@ -446,9 +507,23 @@ public class Board extends JPanel implements KeyEventDispenseChain {
         g.setColor(Color.black);
         g.fillRect(0, 0, d.width, d.height);
         g.setColor(Color.green);
-        g.drawString("Score: " + scoreObserver.getScore(), Commons.BOARD_WIDTH - 90, 60);
+        
 
         if (inGame) {
+        	
+        	if(cr == 0) {
+                g.setColor(Color.black);
+                g.fillRect(0, 0, d.width, d.height);
+                g.setColor(Color.green);
+                g.drawString("Score: " + scoreObserver.getScore(), Commons.BOARD_WIDTH - 90, 60);
+
+            }
+            else {
+                g.setColor(Color.white);
+                g.fillRect(0, 0, d.width, d.height);
+                g.setColor(Color.green);
+                g.drawString("Score: " + scoreObserver.getScore(), Commons.BOARD_WIDTH - 90, 60);
+            }
 
             g.drawLine(0, Commons.GROUND,
                     Commons.BOARD_WIDTH, Commons.GROUND);
