@@ -347,6 +347,51 @@ public class Board extends JPanel implements KeyEventDispenseChain {
             c.close();
         }
     }
+    
+ // Difficulty Mode Feature
+    private class EasyButtonHandler implements ActionListener
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            changeToEasy();
+        }
+    }
+
+    public void changeToEasy()  {
+        Container parent = easyMode.getParent();
+
+        cr = mod.change();
+
+        parent.add(hardMode, 0, 4);
+        parent.remove(easyMode);
+        parent.revalidate();
+        parent.repaint();
+
+
+    }
+
+    private class HardButtonHandler implements ActionListener
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            changeToHard();
+        }
+    }
+
+    public void changeToHard()  {
+        Container parent = hardMode.getParent();
+
+        cr = mod.change();
+
+        parent.add(easyMode, 0, 4);
+        parent.remove(hardMode);
+        parent.revalidate();
+        parent.repaint();
+
+
+    }
 
     private void gameInit() {
 
