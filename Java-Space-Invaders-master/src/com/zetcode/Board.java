@@ -7,6 +7,7 @@ import com.zetcode.BackgroundMusic.Music3;
 import com.zetcode.DifficultyMode.ModeHandler;
 import com.zetcode.LiveScore.LiveScoreObserver;
 import com.zetcode.LiveScore.LiveScoreSubject;
+import com.zetcode.TimerObserver.*;
 import com.zetcode.Command.*;
 import com.zetcode.sprite.Alien;
 import com.zetcode.sprite.Bomb;
@@ -38,6 +39,7 @@ import java.util.Random;
 
 import com.zetcode.MultipleLives.RemainingLivesObserver;
 import com.zetcode.MultipleLives.RemainingLivesSubject;
+import com.zetcode.TimerObserver.TimerSubject;
 import com.zetcode.cheatcode.InputHandler;
 import com.zetcode.cheatcode.KeyEventDispenseChain;
 
@@ -68,6 +70,11 @@ public class Board extends JPanel implements KeyEventDispenseChain {
     public int currentScore = 0;
     private LiveScoreSubject scoreSubject = new LiveScoreSubject(0);
     private LiveScoreObserver scoreObserver = new LiveScoreObserver(scoreSubject);
+
+    // Timer Observer
+    public long time = 0;
+    private TimerSubject timerSubject = new TimerSubject(0);
+    private TimerObserver timerObserver = new TimerObserver(timerSubject);
 
     // Multiple Lives Feature
 
@@ -421,6 +428,9 @@ public class Board extends JPanel implements KeyEventDispenseChain {
         // observer
         scoreSubject.attach(scoreObserver);
 
+        // timer observer
+        timerSubject.attach(timerObserver);
+
         // LiveScoreFeature
 //        scoreSubject = new LiveScoreSubject();
 //        scoreObserver = new LiveScoreObserver(scoreSubject);
@@ -515,15 +525,18 @@ public class Board extends JPanel implements KeyEventDispenseChain {
                 g.setColor(Color.black);
                 g.fillRect(0, 0, d.width, d.height);
                 g.setColor(Color.green);
-                g.drawString("Score: " + scoreObserver.getScore(), Commons.BOARD_WIDTH - 90, 60);
+                g.drawString("Score: " + scoreObserver.getScore(), Commons.BOARD_WIDTH - 90, Commons.OBSERVER_INIT_Y);
 
             }
             else {
                 g.setColor(Color.white);
                 g.fillRect(0, 0, d.width, d.height);
                 g.setColor(Color.green);
-                g.drawString("Score: " + scoreObserver.getScore(), Commons.BOARD_WIDTH - 90, 60);
+                g.drawString("Score: " + scoreObserver.getScore(), Commons.BOARD_WIDTH - 90, Commons.OBSERVER_INIT_Y);
             }
+
+            g.drawString("Timer: " + timerObserver.getTime(), Commons.BOARD_WIDTH - 200, Commons.OBSERVER_INIT_Y);
+
 
             g.drawLine(0, Commons.GROUND,
                     Commons.BOARD_WIDTH, Commons.GROUND);
