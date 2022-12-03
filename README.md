@@ -1,4 +1,4 @@
-# Team Project (Group of Four - Space Invaders)
+# Team Project (Gang of Four - Space Invaders)
 
 
 ## Game Introduction and Project Plan:
@@ -24,6 +24,9 @@ The Gang of Four team functioned as an agile team and completed the project in a
 
 ## Gameplay Summary:
 
+
+## Overview of System Architecture:
+<image of Architecture diagram>
 
 
 ## Features List and Design Notes:
@@ -55,7 +58,13 @@ The features implemented for this new Space Invaders version are:
 ### **Music/sounds**
 
 
+## UI wireframes:
+<image of UI frames>
 
+## Burndown chart:
+<image of burn down charts>
+
+## Final Analysis and Conclusion:
 
 
 
