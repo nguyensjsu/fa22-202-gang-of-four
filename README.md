@@ -2,12 +2,12 @@
 
 ## Our Team
 
-Name                    | Student ID  | XP Core Value
--------------           | ------------| -------------
-Harshit                 |    | Feedback
-Sankalp                 |    | Communication
-Rafic Hasbini           | 011243466   | Simplicity
-Zaber Ahmed             | 015277548   | Respect
+Name                    | Student ID | XP Core Value
+-------------           |------------| -------------
+Harshit                 | 016099083  | Feedback
+Sankalp                 | 016598140  | Communication
+Rafic Hasbini           | 011243466  | Simplicity
+Zaber Ahmed             | 015277548  | Respect
 
 ## Game Introduction and Project Plan:
 The Gang of Four team has implemented a new iteration of the famous Space Invadors game for this project. The game includes the traditional components: Aliens, Spaceship, Alien-Bombs and additional features implemented by our team for this new version. The team will enhance the traditional game with new features to create a more exhilirating player experience. The game objective is for the player to destroy all the aliens before they either destroy the player or invade the player in the fastest time.
@@ -19,15 +19,21 @@ As a starting point, source code was found, reviewed, and tested so that it may 
 The Gang of Four team functioned as an agile team and completed the project in a four week sprint period. The team followed and maintained the core XP values when developing the game, created a Kanban board to track the tasks and progess, took part in daily scrum meetings (either virutal or in person), and worked together to complete blockers, plan and design features, and maintain a realistic and value adding sprint backlog. Each team memeber maintained a weekly journal to document what was completed, what is planned to be completed, any blockers, and how the team is staying true to the XP core values to work as an effective team.
 
 ### **Link to Project Ad and Demo:**
-* Ad Link:
-* Demo Link:
+
+* User Advertisement Story
+
+![User Story](https://www.youtube.com/watch?v=PzhhCfio32U)
+
+* Gameplay Demo
+
+![Gameplay Demo](https://www.youtube.com/watch?v=o2iQpkRLrAo)
 
 
 ### **Individual Journals**
 * Rafic Hasbini's Journal - [Week1](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/Journals/Rafic/Week1.md), [Week2](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/Journals/Rafic/Week2.md), [Week3](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/Journals/Rafic/Week3.md), [Week4](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/Journals/Rafic/Week4.md)
-* Zaber's Journal - [Week1](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/Journals/Zaber/Week1.md), [Week2](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/Journals/Zaber/Week2.md), [Week3](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/Journals/Zaber/Week3.md), [Week4](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/Journals/Zaber/Week4.md)
-* Sankalp's Journal - [Week1](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/Journals/Sankalp/Week1.md),  [Week2](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/LiveScoreFeature/Journals/Sankalp/Week2.md), [Week3](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/Background-Music-Feature/Journals/Sankalp/Week3.md), [Week4](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/Background-Music-Feature/Journals/Sankalp/Week4.md)
-* Harshit's Journal - [Week1](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/Multiple-Lives/Journals/Harshit/Week1.md), [Week2](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/Multiple-Lives/Journals/Harshit/Week2.md), [Week3](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/Journals/Harshit/Week3.md), [Week4](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/Journals/Harshit/Week4.md)
+* Zaber Ahmed's Journal - [Week1](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/Journals/Zaber/Week1.md), [Week2](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/Journals/Zaber/Week2.md), [Week3](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/Journals/Zaber/Week3.md), [Week4](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/Journals/Zaber/Week4.md)
+* Sankalp Tiwari's Journal - [Week1](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/Journals/Sankalp/Week1.md),  [Week2](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/LiveScoreFeature/Journals/Sankalp/Week2.md), [Week3](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/Background-Music-Feature/Journals/Sankalp/Week3.md), [Week4](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/Background-Music-Feature/Journals/Sankalp/Week4.md)
+* Harshit Chouksey's Journal - [Week1](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/Multiple-Lives/Journals/Harshit/Week1.md), [Week2](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/Multiple-Lives/Journals/Harshit/Week2.md), [Week3](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/Journals/Harshit/Week3.md), [Week4](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/Journals/Harshit/Week4.md)
 
 
 ## Gameplay Summary:
@@ -51,7 +57,33 @@ Throughout the game music has been added to create a fun player environment. Sou
 
 
 ## Overview of System Architecture:
-<image of Architecture diagram>
+
+Architectural Diagram
+
+![Architectural Diagram](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/Architectural%20Diagrams/Architecture%20Diagram.png)
+
+Diagram depicting underlying components:
+
+![Component Diagram](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/Architectural%20Diagrams/Component%20Diagram.png)
+
+
+## UI wireframes:
+
+UI Wireframe Combined:
+
+![UI Wireframe Combined](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/UI%20Wireframe/UI_Wireframes_GOF_Space_Invaders.png)
+
+UI Wireframe Components:
+
+![Component 1](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/UI%20Wireframe/IMG_1146.jpeg)
+
+![Component 2](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/UI%20Wireframe/IMG_1147.jpeg)
+
+![Component 3](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/UI%20Wireframe/IMG_1148.jpeg)
+
+![Component 4](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/UI%20Wireframe/IMG_1149.jpeg)
+
+
 
 
 ## Features Design Notes:
@@ -69,42 +101,87 @@ The features implemented for this new Space Invaders version are:
 
 ### **Difficulty mode setting**
 
+The feature was decided to make the gameplay more challenging. A player can now switch between easy and hard modes. The easy mode continues to have the regular gameplay, but the hard mode leads to the player shots being invisible. The player now has to estimate the position of alien and play accordingly. To switch between the modes a Button has been added which toggles between easy and hard mode based on the current mode of play. When you press the button the state pattern is invoked which changes the state of the game from easy to hard; and the other way around.
+
 ### **Player shot levelup**
 
 ### **Cheat codes**
 
-* Chain of responsibility interface
-```
-public interface KeyEventDispenseChain {
-	void setNextChain(KeyEventDispenseChain nextChain);	
-	void keyEvent(int key);
-}
-```
+### **Chain of responsibility interface**
 
-* Plugging the chain inside Board class
-```
-  inputHandler = new InputHandler(this);
-  player.setNextChain(livesSubject);
-  livesSubject.setNextChain(this);
-```
+
+### **Plugging the chain inside Board class**
 
 
 ### **Score display**
 
 ### **Timer display**
 
-### **Lives display**
+### **Multi Lives**
+
+This feature was introduced to make the gameplay more enjoyable, where the player does not have to begin the game by getting shot just once. Therefore, the number of lives were increased to 3 and one life is reduced by getting hit by alien missiles once. To display and keep track of the number of lives left, observer pattern has been used.
 
 ### **Buttons**
 
 ### **Music/sounds**
 
 
-## UI wireframes:
-<image of UI frames>
+## UML Diagrams
 
-## Burndown chart:
-<image of burn down charts>
+Space Invader Starter code class diagram:
+
+![Starter Class Diagram](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/UML%20Diagrams/InitialCode_ClassDiagram.png)
+
+GOF version Space invaders Simplified class diagram:
+
+![Simplified class diagram](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/UML%20Diagrams/Class%20Diagram%20Simplified.png)
+
+GOF version Space Invaders Detailed Class Diagram:
+
+![Detailed Class Diagram](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/UML%20Diagrams/Class%20Diagram%20Detailed.png)
+
+Live Score Observer Class Diagram:
+
+![Live Score Observer Class Diagram](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/UML%20Diagrams/LiveScoreObserver_ClassDiagram.png)
+
+Multi Life Observer Class Diagram:
+
+![Multi Life Observer Class Diagram](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/UML%20Diagrams/Remaining%20Lives%20Observer.png)
+
+
+Background Music Strategy Class Diagram:
+
+![Background Music Strategy Class Diagram](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/UML%20Diagrams/MusicStrategy_ClassDiagram.png)
+
+
+Difficulty Mode State Class Diagram:
+
+![Difficulty Mode State Class Diagram](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/UML%20Diagrams/Difficulty%20Mode%20State.png)
+
+
+Difficulty Mode State Machine Diagram:
+
+![Difficulty Mode State Machine Diagram](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/UML%20Diagrams/Difficulty%20Mode%20State%20Machine.png)
+
+
+Restart Button Command Class Diagram:
+
+![Restart Button Command Class Diagram](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/UML%20Diagrams/ResetCommand_ClassDiagram.png)
+
+
+
+
+
+## Sprint Details:
+
+Sprint Task Sheet
+
+![Sprint Task Sheet](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/Agile/Table%20Burndown.PNG)
+
+Sprint Burndown Chart
+
+![Sprint Burndown Chart](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/Agile/Burndown%20Chart.PNG)
+
 
 ## Final Analysis and Conclusion:
 
