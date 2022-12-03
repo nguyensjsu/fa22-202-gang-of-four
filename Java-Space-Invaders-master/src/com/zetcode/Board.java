@@ -507,9 +507,23 @@ public class Board extends JPanel implements KeyEventDispenseChain {
         g.setColor(Color.black);
         g.fillRect(0, 0, d.width, d.height);
         g.setColor(Color.green);
-        g.drawString("Score: " + scoreObserver.getScore(), Commons.BOARD_WIDTH - 90, 60);
+        
 
         if (inGame) {
+        	
+        	if(cr == 0) {
+                g.setColor(Color.black);
+                g.fillRect(0, 0, d.width, d.height);
+                g.setColor(Color.green);
+                g.drawString("Score: " + scoreObserver.getScore(), Commons.BOARD_WIDTH - 90, 60);
+
+            }
+            else {
+                g.setColor(Color.white);
+                g.fillRect(0, 0, d.width, d.height);
+                g.setColor(Color.green);
+                g.drawString("Score: " + scoreObserver.getScore(), Commons.BOARD_WIDTH - 90, 60);
+            }
 
             g.drawLine(0, Commons.GROUND,
                     Commons.BOARD_WIDTH, Commons.GROUND);
