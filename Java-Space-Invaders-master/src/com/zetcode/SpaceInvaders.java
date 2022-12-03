@@ -1,34 +1,44 @@
 package com.zetcode;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 
-public class SpaceInvaders extends JFrame  {
-
-	/**
-	 *
-	 */
-	private static final long serialVersionUID = 1L;
+public class SpaceInvaders extends JFrame {
+	
+	private Board board = new Board();
 	private static SpaceInvaders instance = null;
-	public Board board = new Board();
-
-
+	
 	public int left_moves = 2;
 	public int right_moves = 2;
-
-	public static synchronized SpaceInvaders getInstance()  {
+	
+	public synchronized static SpaceInvaders getInstance()
+	{
 		if (instance == null) {
 			instance = new SpaceInvaders();
+			instance.showGame();
 		}
 		return instance;
 	}
-
+	
+	public void restartGame()
+	{
+		this.setVisible(false);
+		try {
+			remove(board);
+			board = new Board();
+			
+			showGame();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
     private SpaceInvaders() {
-        initUI();
+
     }
 
-    private void initUI() {
+    private void showGame() {
         add(board);
         setTitle("Space Invaders");
         setSize(Commons.BOARD_WIDTH, Commons.BOARD_HEIGHT);
@@ -36,13 +46,13 @@ public class SpaceInvaders extends JFrame  {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
         setLocationRelativeTo(null);
+        
+        this.setVisible(true);
     }
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
-            var ex = SpaceInvaders.getInstance();
-            ex.setVisible(true);
-            //SoundEffectPlayer.Play(SoundEffectTracks.GetTrackPath(SoundEffectTracks.Track.IntroSound));
+        	SpaceInvaders.getInstance();
         });
     }
 }

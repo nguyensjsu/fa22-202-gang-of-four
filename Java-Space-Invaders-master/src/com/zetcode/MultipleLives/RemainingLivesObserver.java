@@ -20,7 +20,7 @@ public class RemainingLivesObserver implements IRemainingLivesObserver {
 
     public void drawLives(int currLives, Graphics g)
     {
-        g.drawString(" Life: "+ currLives, Commons.BOARD_WIDTH-320, 20);
+        g.drawString(" Life: "+ currLives, 40, 55);
     }
 
     @Override

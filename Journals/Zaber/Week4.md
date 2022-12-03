@@ -5,14 +5,13 @@
 
 <b>What have I been working on? </b>
 <br>
-* Cheat code implemenation during gameplay for the LevelUp using Chain of responsisblity desing pattern. 
+* Singleton desing pattern integration for gameplay restart and manage the board. 
 </br>
 
 
 <b>What do I plan to do this week? </b>
 <br>
-* LevelUp cheat codes integration.
-* Cheat code activation sounds playing.
+* Show the demo to the class.
 <br>
 
 
