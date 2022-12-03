@@ -78,6 +78,10 @@ public class Board extends JPanel implements KeyEventDispenseChain {
 
     // BackgroundMusicFeature
     public static IMusicStrategy musicStrategy;
+    
+    // Difficulty modes
+    public ModeHandler mod;
+    public int cr = 0;
 
 
     // JButtonFeature
