@@ -4,6 +4,7 @@ import com.zetcode.BackgroundMusic.IMusicStrategy;
 import com.zetcode.BackgroundMusic.Music1;
 import com.zetcode.BackgroundMusic.Music2;
 import com.zetcode.BackgroundMusic.Music3;
+import com.zetcode.DifficultyMode.ModeHandler;
 import com.zetcode.LiveScore.LiveScoreObserver;
 import com.zetcode.LiveScore.LiveScoreSubject;
 import com.zetcode.Command.*;
