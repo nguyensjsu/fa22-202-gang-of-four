@@ -113,6 +113,8 @@ public class Board extends JPanel implements KeyEventDispenseChain {
         RestartHandler restartHandler = new RestartHandler();
         PauseMusicHandler pauseMusicHandler = new PauseMusicHandler();
         ToggleMusicHandler toggleMusicHandler = new ToggleMusicHandler();
+        EasyButtonHandler easyHandler = new EasyButtonHandler();
+        HardButtonHandler hardHandler = new HardButtonHandler();
 
         JPanel buttonPane = new JPanel();
         buttonPane.setLayout(new GridLayout(0, 5));
@@ -121,6 +123,7 @@ public class Board extends JPanel implements KeyEventDispenseChain {
         buttonPane.add(restartButton);
         buttonPane.add(pauseMusic);
         buttonPane.add(toggleMusic);
+        buttonPane.add(hardMode);
 
         add(buttonPane);
 
@@ -129,6 +132,8 @@ public class Board extends JPanel implements KeyEventDispenseChain {
         restartButton.addActionListener(restartHandler);
         pauseMusic.addActionListener(pauseMusicHandler);
         toggleMusic.addActionListener(toggleMusicHandler);
+        hardMode.addActionListener(hardHandler);
+        easyMode.addActionListener(easyHandler);
 
 
         pauseButton.setFocusable(false);
@@ -136,10 +141,14 @@ public class Board extends JPanel implements KeyEventDispenseChain {
         resumeButton.setFocusable(false);
         pauseMusic.setFocusable(false);
         toggleMusic.setFocusable(false);
+        hardMode.setFocusable(false);
+        easyMode.setFocusable(false);
         addKeyListener(new TAdapter());
         setFocusable(true);
         d = new Dimension(Commons.BOARD_WIDTH, Commons.BOARD_HEIGHT);
         setBackground(Color.black);
+        
+        mod = new ModeHandler();
 
         timer = new Timer(Commons.DELAY, new GameCycle());
         timer.start();
