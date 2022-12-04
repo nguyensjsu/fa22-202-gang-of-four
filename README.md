@@ -162,9 +162,6 @@ Live Score Observer Class Diagram:
 
 ![Live Score Observer Class Diagram](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/UML%20Diagrams/LiveScoreObserver_ClassDiagram.png)
 
-Cheat Code Chain of Responisbility Class Diagram:
-
-
 Multi Life Observer Class Diagram:
 
 ![Multi Life Observer Class Diagram](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/UML%20Diagrams/Remaining%20Lives%20Observer.png)
@@ -173,7 +170,7 @@ Timer Observer Class Diagram:
 
 ![Timer Observer Class Diagram](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/UML%20Diagrams/TimerObserver_ClassDiagram.png)
 
-Cheat code handle - Chain of Responsibility Diagram:
+Cheat code Chain of Responsibility Diagram:
 
 ![Chain-Of-Responsibility](https://user-images.githubusercontent.com/6449258/205472677-5abb4609-97ad-437f-826a-7fadb9b69934.jpg)
 
