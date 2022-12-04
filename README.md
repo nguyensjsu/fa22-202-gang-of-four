@@ -113,11 +113,7 @@ The feature was decided to make the gameplay more challenging. A player can now 
 The player shot levelup is implemented by using a decorator pattern. The IShot interface class provides the template for the Shot classes to implement and decorate. The Shot.java class is the base shot. The ShotDecorator.java class implements the IShot interface and does that by passing commands to the Shot.java base. The concrete decorator class, DoubleShot.java, then changes whichever methods it wishes to change and implements additional behavior as well. In Board.java class a flag is set for the shot type. Based on that flag, the IShot variable will either represent an object of DoubleShot.java or the base Shot.java class.
 
 ### **Cheat codes**
-
-### **Chain of responsibility interface**
-
-
-### **Plugging the chain inside Board class**
+The cheat codes have been implemented using the chain of responsibility pattern. The event key handler is updated to watch different key inputs. If 1 - 9, or l or b is pressed, the key input is passed to the object that may saisfy the request. By implementing a chain of responsibility, it allows for cleaner code by allowing objects to handle requests that they can only. 
 
 
 ### **Score display**
@@ -125,6 +121,7 @@ The player shot levelup is implemented by using a decorator pattern. The IShot i
 Live Score in the gameplay is tracked using the observer pattern. It has two interfaces, ‘ILiveScoreObserver’ and ‘ILiveScoreSubject’. The concrete observer and Concrete subject are ‘LiveScoreObserver’ and ‘LiveScoreSubject’ respectively. We have a scoreState variable that will handle the current score status and the update method will update the player’s score based on the number of aliens killed. We use the attach method to attach the observer and notifyObservers method to notify the observers about the current score.
 
 ### **Timer display**
+Timer display in gameplay utilizes an observer pattern. Timer being displayed is a reflection of the subject observing the observer. Every second the time changes and increments by one, and the observer is watching the subject. In return the updated time will show up at the screen. 
 
 ### **Multi Lives**
 
@@ -223,6 +220,9 @@ To analyse and conclude on this project and the outcome of out sprint, working a
 <br>
 <br>
 Looking at the final product architecture, the code is loosely coupled and provides a good base for organic growth. However, the Sprite class could be broken down further to meet the same feature-package approach that was used to implement other features. Generally, the use of packages for each feature allowed us to maintain loosely coupled code.
+<br>
+<br>
+Moving forward, the code base could be increased by adding more features by maintaining the current architecture and approach. Also building on current featrues is possible due to the design pattern's currently being used and implemented. 
 
 
 
