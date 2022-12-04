@@ -23,11 +23,11 @@ The Gang of Four team functioned as an agile team and completed the project in a
 
 * User Advertisement Story
 
-![User Story](https://www.youtube.com/watch?v=PzhhCfio32U)
+[User Story](https://www.youtube.com/watch?v=PzhhCfio32U)
 
 * Gameplay Demo
 
-![Gameplay Demo](https://www.youtube.com/watch?v=o2iQpkRLrAo)
+[Gameplay Demo](https://www.youtube.com/watch?v=o2iQpkRLrAo)
 
 
 ### **Individual Journals**
@@ -230,11 +230,11 @@ Agile Retrospective
 
 Standup Meeting
 
-![Standup Meeting](https://www.youtube.com/watch?v=Dc23WRTAPT8&ab_channel=hc693)
+[Standup Meeting](https://www.youtube.com/watch?v=Dc23WRTAPT8&ab_channel=hc693)
 
 Retrospective Meeting
 
-![Retrospective Meeting](https://www.youtube.com/watch?v=XF24iT2FLoM)
+[Retrospective Meeting](https://www.youtube.com/watch?v=XF24iT2FLoM)
 
 
 
