@@ -217,6 +217,9 @@ Retrospective Meeting
 
 [![Retrospective Meeting](https://i9.ytimg.com/vi/XF24iT2FLoM/mq2.jpg?sqp=CJTTrpwG&rs=AOn4CLC3f5syMorKUz8uDN5or2RFchy3Qg)](https://www.youtube.com/watch?v=XF24iT2FLoM)
 
+Agile Retrospective
+![Retrospective](https://user-images.githubusercontent.com/6449258/205473995-791dbc93-6870-4008-9671-290c468c4ace.png)
+
 
 ## Final Analysis and Conclusion:
 To analyse and conclude on this project and the outcome of out sprint, working as an agile team has proven to be beneficial in the development cycle of our game. By using the standard approaches and tools, like the scrum meetings, and kanban board, along with maintaining core XP values, we have been able to develop product which meets our goals and maintains a contant mission for the team. 
