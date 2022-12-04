@@ -24,8 +24,9 @@
 Don't have any blockers now.
 </br>
 
-<b>Core XP Value- Communication </b>
+<b>Core XP Value- Respect </b>
 <br>
-* Communication is the key factor in any project to be successful. Communication is important between your XP team. It will make a smooth collaboration among team members. 
-* For that, we prefer face to face conversation between the team members rather than sitting down and sending emails back and forth.
+* Respect is the key factor in any project to be successful. Respect is important between your XP team. 
+* It will make a smooth collaboration among team members.
+* This is not visible, but it helps to work as team rather being indivudal person.
 </br>
