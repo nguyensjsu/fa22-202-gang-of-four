@@ -7,6 +7,8 @@
 <br>
 * Singleton desing pattern integration for gameplay restart and manage the board. 
 * Timer display issues fixation.
+* Code clean up, remove unnecessary utility functions.
+* Code clean up, remove unnecessary print logs.
 </br>
 
 
