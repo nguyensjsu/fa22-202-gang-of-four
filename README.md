@@ -162,6 +162,8 @@ Live Score Observer Class Diagram:
 
 ![Live Score Observer Class Diagram](https://github.com/nguyensjsu/fa22-202-gang-of-four/blob/main/UML%20Diagrams/LiveScoreObserver_ClassDiagram.png)
 
+Cheat Code Chain of Responisbility Class Diagram:
+
 
 Multi Life Observer Class Diagram:
 
