@@ -9,6 +9,7 @@
 * Timer display issues fixation.
 * Code clean up, remove unnecessary utility functions.
 * Code clean up, remove unnecessary print logs.
+* Arrange the sprint retro and note down the findings.
 </br>
 
 
