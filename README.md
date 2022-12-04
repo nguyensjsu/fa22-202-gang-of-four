@@ -218,7 +218,7 @@ Retrospective Meeting
 [![Retrospective Meeting](https://i9.ytimg.com/vi/XF24iT2FLoM/mq2.jpg?sqp=CJTTrpwG&rs=AOn4CLC3f5syMorKUz8uDN5or2RFchy3Qg)](https://www.youtube.com/watch?v=XF24iT2FLoM)
 
 Agile Retrospective
-![Retrospective](https://user-images.githubusercontent.com/6449258/205473995-791dbc93-6870-4008-9671-290c468c4ace.png)
+<img width="1395" alt="Retrospective" src="https://user-images.githubusercontent.com/6449258/205474772-1e0b848e-7943-40b6-a8c5-09cdf6e92c46.png">
 
 
 ## Final Analysis and Conclusion:
