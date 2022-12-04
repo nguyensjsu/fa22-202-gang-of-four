@@ -104,6 +104,7 @@ The features implemented for this new Space Invaders version are:
 * Lives display - observer pattern
 * Buttons - Command pattern
 * Music/sounds - Strategy pattern
+* SpaceInvaders - Main Screen - Singleton pattern
 
 ### **Difficulty mode setting**
 
